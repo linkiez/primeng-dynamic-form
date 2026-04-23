@@ -1,0 +1,13 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "types": [],
+    "baseUrl": "../",
+    "paths": {
+      "@primeng-dynamic-form/core": ["packages/dynamic-form/src/public-api.ts"]
+    }
+  },
+  "files": ["src/main.ts"],
+  "include": ["src/**/*.d.ts"]
+}

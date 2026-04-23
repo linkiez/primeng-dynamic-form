@@ -1,0 +1,70 @@
+{
+  "$schema": "./node_modules/@angular-devkit/core/src/workspace/workspace-schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "demo": {
+      "projectType": "application",
+      "root": "demo",
+      "sourceRoot": "demo/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/demo",
+            "index": "demo/src/index.html",
+            "browser": "demo/src/main.ts",
+            "tsConfig": "demo/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "demo/src/assets",
+                "output": "assets"
+              }
+            ],
+            "styles": ["demo/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1MB",
+                  "maximumError": "2MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all",
+              "baseHref": "/primeng-dynamic-form/"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "demo:build:production"
+            },
+            "development": {
+              "buildTarget": "demo:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        }
+      }
+    }
+  }
+}

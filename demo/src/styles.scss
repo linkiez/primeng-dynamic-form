@@ -1,0 +1,125 @@
+/* ============================================================
+   Demo App Global Styles
+   @primeng-dynamic-form/core — Documentation Site
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, sans-serif;
+  background-color: var(--p-surface-50);
+  color: var(--p-text-color);
+  line-height: 1.6;
+}
+
+/* ── Code Blocks ── */
+pre {
+  background: #1e1e2e;
+  color: #cdd6f4;
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  margin: 0;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
+}
+
+code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
+  font-size: 0.875em;
+  background: var(--p-surface-100);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  color: var(--p-primary-color);
+}
+
+pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* ── Layout helpers ── */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ── Payload viewer ── */
+.payload-box {
+  background: #1e1e2e;
+  color: #a6e3a1;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  font-family: 'JetBrains Mono', Consolas, monospace;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  overflow-x: auto;
+  min-height: 80px;
+  margin-top: 1rem;
+}
+
+/* ── Section spacing ── */
+.doc-section {
+  padding: 3rem 0;
+}
+
+.doc-section + .doc-section {
+  border-top: 1px solid var(--p-surface-200);
+}
+
+/* ── Table overrides ── */
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+
+  th,
+  td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--p-surface-200);
+  }
+
+  th {
+    background: var(--p-surface-100);
+    font-weight: 600;
+    color: var(--p-text-muted-color);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+}
+
+/* ── Live demo grid ── */
+.demo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── pdf-dynamic-form wrapper ── */
+.demo-form-wrapper pdf-dynamic-form {
+  display: block;
+}

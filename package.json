@@ -5,6 +5,8 @@
   "description": "NPM package providing an Angular 20 + PrimeNG 20 dynamic form library",
   "scripts": {
     "build": "npx ng-packagr -p packages/dynamic-form/ng-package.json",
+    "build:demo": "npx ng build demo --configuration production",
+    "serve:demo": "npx ng serve demo --configuration development",
     "test": "jest --testPathPattern='tests/unit'",
     "test:integration": "jest --testPathPattern='tests/integration'",
     "test:contract": "jest --testPathPattern='tests/contract'",
@@ -26,7 +28,9 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^20.0.0",
+    "@angular/cli": "^20.3.24",
     "@angular/compiler-cli": "^20.0.0",
+    "@primeng/themes": "^21.0.4",
     "@types/jest": "^29.5.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
