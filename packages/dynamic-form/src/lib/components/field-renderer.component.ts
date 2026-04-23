@@ -158,6 +158,31 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
       }
     </div>
   `,
+  styles: [
+    `
+      .pdf-field {
+        display: grid;
+        gap: 0.5rem;
+      }
+
+      .pdf-field__checkbox {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+
+      .pdf-field__radio-group {
+        display: grid;
+        gap: 0.5rem;
+      }
+
+      .pdf-field__radio-item {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+    `,
+  ],
 })
 export class FieldRendererComponent {
   readonly field = input.required<FieldDefinition>();

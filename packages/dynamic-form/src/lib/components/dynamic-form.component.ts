@@ -60,6 +60,34 @@ import { FieldRendererComponent } from './field-renderer.component';
       </form>
     }
   `,
+  styles: [
+    `
+      .pdf-form {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .pdf-form--horizontal {
+        grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+        align-items: start;
+      }
+
+      .pdf-form--horizontal .pdf-actions {
+        grid-column: 1 / -1;
+      }
+
+      .pdf-actions {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+
+      .pdf-config-error {
+        display: grid;
+        gap: 0.5rem;
+      }
+    `,
+  ],
 })
 export class DynamicFormComponent implements OnInit, OnChanges, OnDestroy {
   readonly schema = input.required<FormSchema>();
