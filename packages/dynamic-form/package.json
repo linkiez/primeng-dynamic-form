@@ -1,0 +1,21 @@
+{
+  "name": "@primeng-dynamic-form/core",
+  "version": "0.1.0",
+  "description": "Angular 20 + PrimeNG 20 dynamic form library",
+  "peerDependencies": {
+    "@angular/common": "^20.0.0",
+    "@angular/core": "^20.0.0",
+    "@angular/forms": "^20.0.0",
+    "primeng": "^20.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@angular/common": { "optional": false },
+    "@angular/core": { "optional": false },
+    "@angular/forms": { "optional": false },
+    "primeng": { "optional": false }
+  },
+  "dependencies": {
+    "tslib": "^2.6.0"
+  },
+  "sideEffects": false
+}

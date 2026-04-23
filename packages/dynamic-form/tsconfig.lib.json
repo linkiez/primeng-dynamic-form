@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../out-tsc/lib",
+    "declarationDir": "../../out-tsc/lib",
+    "declaration": true,
+    "inlineSources": true
+  },
+  "exclude": [
+    "src/test-setup.ts",
+    "**/*.spec.ts"
+  ]
+}

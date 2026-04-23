@@ -1,50 +1,91 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report
+- Version change: template -> 1.0.0
+- Modified principles:
+	- Template Principle 1 -> I. Specification-First Delivery
+	- Template Principle 2 -> II. Test-First Engineering (NON-NEGOTIABLE)
+	- Template Principle 3 -> III. Incremental and Traceable Delivery
+	- Template Principle 4 -> IV. Quality and Security Gates
+	- Template Principle 5 -> V. Documentation and Context Continuity
+- Added sections:
+	- Implementation Standards
+	- Workflow and Review Expectations
+- Removed sections:
+	- None
+- Templates requiring updates:
+	- ✅ updated: .specify/templates/plan-template.md
+	- ✅ updated: .specify/templates/spec-template.md
+	- ✅ updated: .specify/templates/tasks-template.md
+	- ⚠ pending: .specify/templates/constitution-template.md (left generic by design)
+- Deferred TODOs:
+	- None
+-->
+
+# PrimeNG Dynamic Form Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Specification-First Delivery
+Every change MUST start with an explicit specification and implementation plan before
+coding begins. The minimum required artifact chain is: `spec.md` -> `plan.md` ->
+`tasks.md` -> implementation. This rule exists to keep scope auditable and to prevent
+silent requirement drift.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Test-First Engineering (NON-NEGOTIABLE)
+All behavioral changes MUST follow RED-GREEN-REFACTOR. A failing test MUST be written
+before production code, then implementation MUST be the minimum needed to pass.
+Unit, integration, and contract coverage MUST be selected according to risk and must
+be documented in the plan. This rule protects correctness and supports safe refactors.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Incremental and Traceable Delivery
+Work MUST be delivered in independently testable user-story slices, prioritizing the
+MVP first (P1 before P2/P3). Branch naming MUST follow configured conventions and each
+task MUST map to a specific story or shared foundation step. This rule ensures progress
+can be validated and shipped incrementally.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Quality and Security Gates
+No change may be merged unless quality and security gates pass for impacted scope:
+lint/static checks, tests, and secret-safety review. Hardcoded credentials are
+forbidden. Any compatibility break MUST be explicitly documented with migration guidance.
+This rule reduces regressions and security incidents.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Documentation and Context Continuity
+Implementation decisions, assumptions, and operational workflows MUST remain discoverable.
+When source code under `src/` exists and is changed, its paired `.doc.md` MUST be
+updated in the same change set. Reusable decisions and conventions SHOULD be recorded
+in project memory to avoid repeated rediscovery.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Implementation Standards
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+- Code identifiers and technical documentation in code MUST use en_US.
+- User-facing interface text SHOULD use pt_BR unless a feature explicitly requires
+	another locale.
+- Type-safe development is required: `any` usage MUST be justified and minimized.
+- Security-sensitive values MUST be referenced via environment/secret management,
+	never hardcoded.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## Workflow and Review Expectations
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+- Planning gate: Constitution check MUST pass before implementation starts.
+- Delivery gate: each user story MUST define independent acceptance scenarios.
+- Review gate: pull requests MUST include evidence of tests run and impacted checks.
+- Documentation gate: changed behavior MUST be reflected in specs/plans/tasks and,
+	when applicable, in paired `.doc.md` files.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution supersedes conflicting local conventions for feature delivery.
+Amendments require: (1) explicit rationale, (2) update of dependent templates,
+and (3) semantic version bump justification.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+Versioning policy:
+- MAJOR: backward-incompatible governance or principle removals/redefinitions.
+- MINOR: new principle/section or materially expanded mandatory guidance.
+- PATCH: wording clarifications, typo fixes, or non-semantic refinements.
+
+Compliance review expectations:
+- Every plan MUST include a Constitution Check.
+- Every tasks file MUST preserve test-first ordering when tests are required.
+- Violations MUST be documented in the plan's Complexity Tracking table with rationale.
+
+**Version**: 1.0.0 | **Ratified**: 2026-04-11 | **Last Amended**: 2026-04-11

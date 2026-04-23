@@ -1,0 +1,40 @@
+{
+  "name": "primeng-dynamic-form",
+  "version": "1.0.0",
+  "private": true,
+  "description": "NPM package providing an Angular 20 + PrimeNG 20 dynamic form library",
+  "scripts": {
+    "build": "npx ng-packagr -p packages/dynamic-form/ng-package.json",
+    "test": "jest --testPathPattern='tests/unit'",
+    "test:integration": "jest --testPathPattern='tests/integration'",
+    "test:contract": "jest --testPathPattern='tests/contract'",
+    "test:all": "jest",
+    "lint": "eslint 'packages/dynamic-form/src/**/*.ts'"
+  },
+  "dependencies": {
+    "@angular/animations": "^20.0.0",
+    "@angular/common": "^20.0.0",
+    "@angular/compiler": "^20.0.0",
+    "@angular/core": "^20.0.0",
+    "@angular/forms": "^20.0.0",
+    "@angular/platform-browser": "^20.0.0",
+    "@angular/platform-browser-dynamic": "^20.0.0",
+    "primeng": "^20.0.0",
+    "rxjs": "^7.8.0",
+    "tslib": "^2.6.0",
+    "zone.js": "^0.15.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^20.0.0",
+    "@angular/compiler-cli": "^20.0.0",
+    "@types/jest": "^29.5.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^9.0.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jest-preset-angular": "^14.4.0",
+    "ng-packagr": "^20.0.0",
+    "typescript": "~5.8.0"
+  }
+}

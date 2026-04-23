@@ -1,0 +1,11 @@
+{
+  "name": "@primeng-dynamic-form/tests",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "jest --testPathPattern='tests/unit'",
+    "test:integration": "jest --testPathPattern='tests/integration'",
+    "test:contract": "jest --testPathPattern='tests/contract'",
+    "test:all": "jest"
+  }
+}
