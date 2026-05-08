@@ -5,7 +5,14 @@ import tsParser from '@typescript-eslint/parser';
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   {
-    ignores: ['dist/**', 'out-tsc/**', 'node_modules/**', '**/*.js'],
+    ignores: [
+      'dist/**',
+      'build/**',
+      'coverage/**',
+      'out-tsc/**',
+      'node_modules/**',
+      '**/*.js',
+    ],
   },
   {
     files: ['packages/dynamic-form/src/**/*.ts'],
