@@ -1,0 +1,15 @@
+# 1.0.0 (2026-05-09)
+
+
+### Bug Fixes
+
+* **ci:** corrigir semantic-release para pkgRoot da lib e labels do github ([a0e270e](https://github.com/linkiez/primeng-dynamic-form/commit/a0e270ea706472a28c6844e3e59d0df38a4f4200))
+* enable zone runtime and add form field gaps ([dcf0b6d](https://github.com/linkiez/primeng-dynamic-form/commit/dcf0b6d976e92ce27b265f0ba24da17018355060))
+
+
+### Features
+
+* add documentation demo site with live examples ([26e6f75](https://github.com/linkiez/primeng-dynamic-form/commit/26e6f75d26a953cfd6c52a12a2731a555d208a1a))
+* adicionar novos tipos de campo, hooks, i18n e evidencias de release ([cf726cc](https://github.com/linkiez/primeng-dynamic-form/commit/cf726cc0ce57d71cc17e8d1ca6ea2874219442d2))
+* implement @primeng-dynamic-form/core v0.1.0 ([752dac5](https://github.com/linkiez/primeng-dynamic-form/commit/752dac5f13371081cbe76447ab7b44aed2f358e2))
+* implementar hardening e planejamento de melhorias da feature 002 ([a26a5f8](https://github.com/linkiez/primeng-dynamic-form/commit/a26a5f8b2c1c3605fe6e0242c6e83035067bbc9f))
