@@ -11,7 +11,8 @@
     "test:integration": "jest --testPathPatterns='tests/integration'",
     "test:contract": "jest --testPathPatterns='tests/contract'",
     "test:all": "jest",
-    "lint": "eslint 'packages/dynamic-form/src/**/*.ts'"
+    "lint": "eslint 'packages/dynamic-form/src/**/*.ts'",
+    "release": "semantic-release"
   },
   "dependencies": {
     "@angular/animations": "^21.2.12",
@@ -31,6 +32,12 @@
     "@angular/cli": "^21.2.10",
     "@angular/compiler-cli": "^21.2.12",
     "@primeng/themes": "^21.0.4",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^12.0.8",
+    "@semantic-release/npm": "^13.1.5",
+    "@semantic-release/release-notes-generator": "^14.1.1",
     "@types/jest": "^30.0.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
@@ -39,6 +46,8 @@
     "jest-environment-jsdom": "^30.4.1",
     "jest-preset-angular": "^14.4.0",
     "ng-packagr": "^21.2.3",
+    "semantic-release": "^25.0.3",
     "typescript": "~5.9.3"
-  }
+  },
+  "packageManager": "yarn@4.14.1"
 }
