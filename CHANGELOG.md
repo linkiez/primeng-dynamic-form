@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/linkiez/primeng-dynamic-form/compare/v1.0.0...v1.0.1) (2026-05-09)
+
+
+### Bug Fixes
+
+* **ci:** adicionar repository.url para trusted publishing npm ([19a4669](https://github.com/linkiez/primeng-dynamic-form/commit/19a4669fb901b314d4791acd1cc84f27a0439c1c))
+
 # 1.0.0 (2026-05-09)
 
 
