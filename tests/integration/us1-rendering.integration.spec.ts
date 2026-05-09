@@ -82,7 +82,9 @@ describe('Integration: US1 - Field type rendering', () => {
     expect(radios.length).toBe(2);
   });
 
-  it('should not render hidden fields', async () => {
+  it('should not render hidden fields', () => {
+    fixture.destroy();
+    fixture = TestBed.createComponent(RenderingHostComponent);
     const component = fixture.componentInstance;
     component.schema = {
       ...component.schema,

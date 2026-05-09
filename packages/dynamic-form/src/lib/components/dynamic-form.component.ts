@@ -1,11 +1,9 @@
 import {
   Component,
-  OnChanges,
+  EventEmitter,
+  Input,
   OnDestroy,
-  OnInit,
-  SimpleChanges,
-  input,
-  output,
+  Output,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -90,15 +88,45 @@ import { FieldRendererComponent } from './field-renderer.component';
     `,
   ],
 })
-export class DynamicFormComponent implements OnInit, OnChanges, OnDestroy {
-  readonly schema = input.required<FormSchema>();
-  readonly config = input<DynamicFormConfiguration>();
-  readonly initialValues = input<Record<string, unknown>>();
+export class DynamicFormComponent implements OnDestroy {
+  private schemaInput?: FormSchema;
+  private configInput?: DynamicFormConfiguration;
+  private initialValuesInput?: Record<string, unknown>;
 
-  readonly formSubmit = output<FormSubmissionPayload>();
-  readonly formChange = output<Record<string, unknown>>();
-  readonly beforeSubmit = output<Record<string, unknown>>();
-  readonly afterReset = output<Record<string, unknown>>();
+  @Input({ required: true })
+  set schema(value: FormSchema) {
+    this.schemaInput = value;
+    this.tryInitialize();
+  }
+
+  get schema(): FormSchema {
+    return this.schemaInput as FormSchema;
+  }
+
+  @Input()
+  set config(value: DynamicFormConfiguration | undefined) {
+    this.configInput = value;
+    this.tryInitialize();
+  }
+
+  get config(): DynamicFormConfiguration | undefined {
+    return this.configInput;
+  }
+
+  @Input()
+  set initialValues(value: Record<string, unknown> | undefined) {
+    this.initialValuesInput = value;
+    this.tryInitialize();
+  }
+
+  get initialValues(): Record<string, unknown> | undefined {
+    return this.initialValuesInput;
+  }
+
+  @Output() readonly formSubmit = new EventEmitter<FormSubmissionPayload>();
+  @Output() readonly formChange = new EventEmitter<Record<string, unknown>>();
+  @Output() readonly beforeSubmit = new EventEmitter<Record<string, unknown>>();
+  @Output() readonly afterReset = new EventEmitter<Record<string, unknown>>();
 
   protected formGroup!: FormGroup;
   protected resolvedConfig!: Required<DynamicFormConfiguration>;
@@ -108,23 +136,28 @@ export class DynamicFormComponent implements OnInit, OnChanges, OnDestroy {
 
   private readonly destroy$ = new Subject<void>();
 
-  ngOnInit(): void {
-    this.initialize();
-  }
-
-  ngOnChanges(_changes: SimpleChanges): void {
-    this.initialize();
-  }
-
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
   }
 
+  private tryInitialize(): void {
+    if (!this.schemaInput) {
+      return;
+    }
+
+    this.initialize();
+  }
+
   private initialize(): void {
+    if (!this.schemaInput) {
+      return;
+    }
+
+    const schema = this.schemaInput;
     this.destroy$.next();
 
-    this.resolvedConfig = resolveConfig(this.config());
+    this.resolvedConfig = resolveConfig(this.configInput);
     this.resolvedConfig.submitLabel = resolveTranslation({
       key: 'form.submitLabel',
       fallbackText: this.resolvedConfig.submitLabel,
@@ -141,12 +174,12 @@ export class DynamicFormComponent implements OnInit, OnChanges, OnDestroy {
     });
     this.formClass = `pdf-form pdf-form--${this.resolvedConfig.layoutMode}`;
 
-    const { errors } = parseAndValidateSchema(this.schema());
+    const { errors } = parseAndValidateSchema(schema);
     this.configErrors = errors;
 
     if (errors.length > 0) return;
 
-    this.visibleFields = this.schema().fields
+    this.visibleFields = schema.fields
       .filter((f) => !f.hidden)
       .map((field) => {
         const labelKey = field.i18nKey ? `${field.i18nKey}.label` : `fields.${field.key}.label`;
@@ -172,7 +205,7 @@ export class DynamicFormComponent implements OnInit, OnChanges, OnDestroy {
           }),
         };
       });
-    this.formGroup = buildFormGroup(this.visibleFields, this.initialValues());
+    this.formGroup = buildFormGroup(this.visibleFields, this.initialValuesInput);
 
     if (this.resolvedConfig.emitOnChange) {
       this.formGroup.valueChanges

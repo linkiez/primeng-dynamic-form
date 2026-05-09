@@ -4,10 +4,12 @@
     "outDir": "./out-tsc/spec",
     "types": ["jest"],
     "esModuleInterop": true,
-    "module": "CommonJS",
-    "moduleResolution": "node",
+    "isolatedModules": true,
+    "module": "Node16",
+    "moduleResolution": "node16",
     "paths": {
-      "@linkiez/primeng-dynamic-form": ["packages/dynamic-form/src/public-api.ts"]
+      "@linkiez/primeng-dynamic-form": ["packages/dynamic-form/src/public-api.ts"],
+      "primeng/*": ["node_modules/primeng/types/primeng-*"]
     }
   },
   "include": [

@@ -84,6 +84,8 @@ describe('Integration: US4 - i18n and accessibility', () => {
   });
 
   it('should fallback to pt-BR when active locale key is missing', () => {
+    fixture.destroy();
+    fixture = TestBed.createComponent(I18nAccessibilityHostComponent);
     const host = fixture.componentInstance;
     host.config = {
       ...host.config,

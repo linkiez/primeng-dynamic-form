@@ -54,6 +54,9 @@ describe('Integration: DynamicFormComponent host rendering', () => {
   });
 
   it('should display config error panel when schema version is invalid', () => {
+    fixture.destroy();
+    fixture = TestBed.createComponent(TestHostComponent);
+    component = fixture.componentInstance;
     component.schema = { schemaVersion: '2.0', formId: 'test', fields: [] };
     fixture.detectChanges();
     const errorPanel = fixture.nativeElement.querySelector('.pdf-config-error');

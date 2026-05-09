@@ -49,6 +49,9 @@ describe('Integration: US3 - formChange event', () => {
   });
 
   it('should not emit formChange when emitOnChange=false', () => {
+    fixture.destroy();
+    fixture = TestBed.createComponent(ChangeEventHostComponent);
+    component = fixture.componentInstance;
     component.config = { emitOnChange: false };
     fixture.detectChanges();
 

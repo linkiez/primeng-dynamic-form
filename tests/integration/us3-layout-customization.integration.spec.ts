@@ -45,6 +45,9 @@ describe('Integration: US3 - Layout customization', () => {
   });
 
   it('should hide submit button when showSubmitButton=false', () => {
+    fixture.destroy();
+    fixture = TestBed.createComponent(LayoutHostComponent);
+    component = fixture.componentInstance;
     component.config = { showSubmitButton: false };
     fixture.detectChanges();
     const btn = fixture.nativeElement.querySelector('p-button[type="submit"]');
@@ -52,6 +55,9 @@ describe('Integration: US3 - Layout customization', () => {
   });
 
   it('should show reset button when showResetButton=true', () => {
+    fixture.destroy();
+    fixture = TestBed.createComponent(LayoutHostComponent);
+    component = fixture.componentInstance;
     component.config = { showResetButton: true };
     fixture.detectChanges();
     const resetBtn = fixture.nativeElement.querySelector('p-button[type="button"]');
@@ -59,6 +65,9 @@ describe('Integration: US3 - Layout customization', () => {
   });
 
   it('should apply grid layout class when layoutMode=grid', () => {
+    fixture.destroy();
+    fixture = TestBed.createComponent(LayoutHostComponent);
+    component = fixture.componentInstance;
     component.config = { layoutMode: 'grid' };
     fixture.detectChanges();
     const form = fixture.nativeElement.querySelector('form');

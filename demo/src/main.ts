@@ -1,3 +1,4 @@
+import { provideZoneChangeDetection } from "@angular/core";
 import 'zone.js';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { providePrimeNG } from 'primeng/config';
@@ -6,7 +7,7 @@ import { AppComponent } from './app/app.component';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    providePrimeNG({
+    provideZoneChangeDetection(),providePrimeNG({
       theme: {
         preset: Aura,
         options: {

@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { InputText } from 'primeng/inputtext';
 import { Password } from 'primeng/password';
@@ -19,7 +19,6 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
   selector: 'pdf-field-renderer',
   standalone: true,
   imports: [
-    CommonModule,
     ReactiveFormsModule,
     InputText,
     Password,
@@ -31,8 +30,8 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
     DatePicker,
     FileUpload,
     FloatLabel,
-    Message,
-  ],
+    Message
+],
   template: `
     <div class="pdf-field" [class.pdf-field--error]="hasError">
       @switch (field().type) {
