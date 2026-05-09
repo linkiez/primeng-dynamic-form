@@ -6,8 +6,8 @@
 import {
   prioritizeBacklog,
   validatePrioritizationInput,
-} from '@primeng-dynamic-form/core';
-import type { InitiativeForPrioritization } from '@primeng-dynamic-form/core';
+} from '@linkiez/primeng-dynamic-form';
+import type { InitiativeForPrioritization } from '@linkiez/primeng-dynamic-form';
 
 const initiatives: InitiativeForPrioritization[] = [
   {

@@ -1,6 +1,6 @@
 # Quality Gate Runbook
 
-**Package**: `@primeng-dynamic-form/core`
+**Package**: `@linkiez/primeng-dynamic-form`
 **Feature**: `002-hardening-new-features`
 
 ---
@@ -13,7 +13,7 @@ All gates must be **green** before a phase checkpoint is declared complete.
 |------|---------|---------------|
 | Lint | `npm run lint` | Exit code 0, zero errors |
 | Tests (all) | `npm run test:all` | All suites pass, zero failures |
-| Build | `npm run build` | Exit code 0, `dist/@primeng-dynamic-form/core` emitted |
+| Build | `npm run build` | Exit code 0, `dist/@linkiez/primeng-dynamic-form` emitted |
 | Contract | `npm run test -- tests/contract` | All contract specs pass |
 
 ---

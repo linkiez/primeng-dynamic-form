@@ -1,7 +1,7 @@
 # Contract: Improvement and Hardening Roadmap
 
 ## Scope
-Contrato operacional para definir, priorizar e promover iniciativas de hardening, melhorias e novas features no projeto `@primeng-dynamic-form/core`.
+Contrato operacional para definir, priorizar e promover iniciativas de hardening, melhorias e novas features no projeto `@linkiez/primeng-dynamic-form`.
 
 ## Input Contract
 Cada iniciativa aceita no roadmap MUST conter:

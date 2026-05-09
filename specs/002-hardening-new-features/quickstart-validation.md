@@ -1,6 +1,6 @@
 # Quickstart: Validation Scenarios (feature/002)
 
-**Package**: `@primeng-dynamic-form/core`
+**Package**: `@linkiez/primeng-dynamic-form`
 **Feature**: `002-hardening-new-features`
 
 This guide provides copy-paste examples for each new API introduced in feature/002.
@@ -16,8 +16,8 @@ import {
   HARDENING_CONTROLS,
   validateHardeningGate,
   validateReleaseReadiness,
-} from '@primeng-dynamic-form/core';
-import type { HardeningEvidence } from '@primeng-dynamic-form/core';
+} from '@linkiez/primeng-dynamic-form';
+import type { HardeningEvidence } from '@linkiez/primeng-dynamic-form';
 
 const evidence: HardeningEvidence[] = [
   { controlKey: 'lint',                 passed: true,  recordedAt: new Date() },
@@ -59,8 +59,8 @@ console.log(readiness.blockers); // ['Missing evidence: build', 'Missing evidenc
 import {
   validatePrioritizationInput,
   prioritizeBacklog,
-} from '@primeng-dynamic-form/core';
-import type { InitiativeForPrioritization } from '@primeng-dynamic-form/core';
+} from '@linkiez/primeng-dynamic-form';
+import type { InitiativeForPrioritization } from '@linkiez/primeng-dynamic-form';
 
 const initiatives: InitiativeForPrioritization[] = [
   {
@@ -101,8 +101,8 @@ import {
   validateCompatibilityImpact,
   buildRoadmapSlice,
   mapProposalsToSlice,
-} from '@primeng-dynamic-form/core';
-import type { FeatureProposal } from '@primeng-dynamic-form/core';
+} from '@linkiez/primeng-dynamic-form';
+import type { FeatureProposal } from '@linkiez/primeng-dynamic-form';
 
 const proposals: FeatureProposal[] = [
   {

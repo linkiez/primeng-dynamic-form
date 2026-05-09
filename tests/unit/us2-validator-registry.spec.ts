@@ -1,6 +1,6 @@
 import { resolveValidators } from '../../packages/dynamic-form/src/lib/validators/validator-registry';
 import { buildFormGroup } from '../../packages/dynamic-form/src/lib/validators/control-validator.adapter';
-import type { FieldDefinition, ValidationRule } from '@primeng-dynamic-form/core';
+import type { FieldDefinition, ValidationRule } from '@linkiez/primeng-dynamic-form';
 import { FormControl } from '@angular/forms';
 
 describe('Unit: US2 - Validator registry', () => {

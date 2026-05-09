@@ -1,7 +1,7 @@
 # Release Evidence Log
 
 **Feature**: `002-hardening-new-features`
-**Package**: `@primeng-dynamic-form/core`
+**Package**: `@linkiez/primeng-dynamic-form`
 
 ---
 

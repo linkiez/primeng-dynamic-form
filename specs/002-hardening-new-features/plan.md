@@ -7,7 +7,7 @@
 
 ## Summary
 
-Estabelecer um plano executavel para evolucao do `@primeng-dynamic-form/core` em tres frentes: hardening de release (qualidade, seguranca e compatibilidade), melhorias de DX/manutenibilidade, e novas features incrementais na API de schema. A abordagem prioriza MVP de confiabilidade (P1), depois backlog de melhorias (P2), e por fim adicao de features com criterio de aceite e impactos documentados (P3).
+Estabelecer um plano executavel para evolucao do `@linkiez/primeng-dynamic-form` em tres frentes: hardening de release (qualidade, seguranca e compatibilidade), melhorias de DX/manutenibilidade, e novas features incrementais na API de schema. A abordagem prioriza MVP de confiabilidade (P1), depois backlog de melhorias (P2), e por fim adicao de features com criterio de aceite e impactos documentados (P3).
 
 ## Technical Context
 

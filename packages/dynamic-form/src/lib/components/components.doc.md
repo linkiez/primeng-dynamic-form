@@ -1,7 +1,7 @@
 # Module: components
 
 **Path**: `packages/dynamic-form/src/lib/components/`
-**Package**: `@primeng-dynamic-form/core`
+**Package**: `@linkiez/primeng-dynamic-form`
 
 ## Responsibility
 

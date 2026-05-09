@@ -1,5 +1,5 @@
 {
-  "name": "primeng-dynamic-form",
+  "name": "@linkiez/primeng-dynamic-form",
   "version": "1.0.0",
   "private": true,
   "description": "NPM package providing an Angular 20 + PrimeNG 20 dynamic form library",

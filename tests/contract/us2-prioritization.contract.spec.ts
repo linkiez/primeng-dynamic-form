@@ -7,11 +7,11 @@
 import type {
   InitiativeForPrioritization,
   PrioritizedBacklog,
-} from '@primeng-dynamic-form/core';
+} from '@linkiez/primeng-dynamic-form';
 import {
   prioritizeBacklog,
   validatePrioritizationInput,
-} from '@primeng-dynamic-form/core';
+} from '@linkiez/primeng-dynamic-form';
 
 describe('Prioritization Output Contract', () => {
   const baseInitiative: InitiativeForPrioritization = {

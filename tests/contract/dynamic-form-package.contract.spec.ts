@@ -1,12 +1,12 @@
-import { DynamicFormComponent, SUPPORTED_FIELD_TYPES, ERROR_CODES } from '@primeng-dynamic-form/core';
+import { DynamicFormComponent, SUPPORTED_FIELD_TYPES, ERROR_CODES } from '@linkiez/primeng-dynamic-form';
 import type {
   FormSchema,
   ValidationRule,
   DynamicFormConfiguration,
   FormSubmissionPayload,
-} from '@primeng-dynamic-form/core';
+} from '@linkiez/primeng-dynamic-form';
 
-describe('Contract: @primeng-dynamic-form/core exports', () => {
+describe('Contract: @linkiez/primeng-dynamic-form exports', () => {
   describe('Component export', () => {
     it('should export DynamicFormComponent', () => {
       expect(DynamicFormComponent).toBeDefined();

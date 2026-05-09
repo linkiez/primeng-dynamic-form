@@ -8,14 +8,14 @@
 ## 1. Instalar o pacote
 
 ```bash
-npm install @primeng-dynamic-form/core
+npm install @linkiez/primeng-dynamic-form
 ```
 
 ## 2. Importar no componente consumidor
 
 ```ts
 import { Component } from '@angular/core';
-import { DynamicFormComponent, FormSchema, FormSubmissionPayload } from '@primeng-dynamic-form/core';
+import { DynamicFormComponent, FormSchema, FormSubmissionPayload } from '@linkiez/primeng-dynamic-form';
 
 @Component({
   selector: 'app-example',

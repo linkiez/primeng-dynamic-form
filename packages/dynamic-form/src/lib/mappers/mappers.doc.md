@@ -1,7 +1,7 @@
 # Module: mappers
 
 **Path**: `packages/dynamic-form/src/lib/mappers/`
-**Package**: `@primeng-dynamic-form/core`
+**Package**: `@linkiez/primeng-dynamic-form`
 
 ## Responsibility
 

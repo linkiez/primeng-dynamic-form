@@ -1,5 +1,5 @@
-import { DynamicFormComponent, SUPPORTED_FIELD_TYPES, ERROR_CODES } from '@primeng-dynamic-form/core';
-import type { FormSchema, FormSubmissionPayload } from '@primeng-dynamic-form/core';
+import { DynamicFormComponent, SUPPORTED_FIELD_TYPES, ERROR_CODES } from '@linkiez/primeng-dynamic-form';
+import type { FormSchema, FormSubmissionPayload } from '@linkiez/primeng-dynamic-form';
 
 describe('Contract: US1 - Entry points and component symbols', () => {
   it('should export DynamicFormComponent as a valid Angular component class', () => {

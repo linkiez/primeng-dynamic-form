@@ -3,8 +3,8 @@
  *
  * Tests all validation rules for CompatibilityImpact.
  */
-import { validateCompatibilityImpact } from '@primeng-dynamic-form/core';
-import type { CompatibilityImpact } from '@primeng-dynamic-form/core';
+import { validateCompatibilityImpact } from '@linkiez/primeng-dynamic-form';
+import type { CompatibilityImpact } from '@linkiez/primeng-dynamic-form';
 
 describe('validateCompatibilityImpact', () => {
   it('should pass when no breaking flags are set', () => {

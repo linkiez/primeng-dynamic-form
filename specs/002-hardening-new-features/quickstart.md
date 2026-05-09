@@ -1,7 +1,7 @@
 # Quickstart: Aplicando o Plano de Melhorias, Hardening e Novas Features
 
 ## Objetivo
-Executar a trilha de planejamento e governanca para evoluir o pacote `@primeng-dynamic-form/core` com seguranca e previsibilidade.
+Executar a trilha de planejamento e governanca para evoluir o pacote `@linkiez/primeng-dynamic-form` com seguranca e previsibilidade.
 
 ## 1. Validar baseline do repositorio
 

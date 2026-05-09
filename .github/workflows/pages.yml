@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-      - master
-      - 001-create-npm-package
   workflow_dispatch:
 
 permissions:

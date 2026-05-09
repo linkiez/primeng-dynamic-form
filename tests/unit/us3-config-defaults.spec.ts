@@ -1,5 +1,5 @@
 import { resolveConfig } from '../../packages/dynamic-form/src/lib/mappers/config-defaults.mapper';
-import type { DynamicFormConfiguration } from '@primeng-dynamic-form/core';
+import type { DynamicFormConfiguration } from '@linkiez/primeng-dynamic-form';
 
 describe('Unit: US3 - Config defaults', () => {
   it('should return all defaults when no config is provided', () => {

@@ -5,7 +5,7 @@
 
 ## Overview
 
-This feature establishes the planning infrastructure for `@primeng-dynamic-form/core`
+This feature establishes the planning infrastructure for `@linkiez/primeng-dynamic-form`
 release hardening, backlog prioritization, and feature lifecycle governance across three
 independently deliverable user stories.
 

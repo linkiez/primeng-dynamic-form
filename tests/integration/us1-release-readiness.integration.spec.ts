@@ -8,8 +8,8 @@ import {
   validateReleaseReadiness,
   HARDENING_CONTROLS,
   MANDATORY_GATE_KEYS,
-} from '@primeng-dynamic-form/core';
-import type { HardeningEvidence } from '@primeng-dynamic-form/core';
+} from '@linkiez/primeng-dynamic-form';
+import type { HardeningEvidence } from '@linkiez/primeng-dynamic-form';
 
 function buildPassingEvidence(): HardeningEvidence[] {
   return MANDATORY_GATE_KEYS.map((key) => ({

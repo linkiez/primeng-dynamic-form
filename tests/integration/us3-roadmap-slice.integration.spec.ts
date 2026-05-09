@@ -6,8 +6,8 @@
 import {
   validateCompatibilityImpact,
   buildRoadmapSlice,
-} from '@primeng-dynamic-form/core';
-import type { FeatureProposal, RoadmapSlice } from '@primeng-dynamic-form/core';
+} from '@linkiez/primeng-dynamic-form';
+import type { FeatureProposal, RoadmapSlice } from '@linkiez/primeng-dynamic-form';
 
 const nonBreakingProposal: FeatureProposal = {
   id: 'FP-001',

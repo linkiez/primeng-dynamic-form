@@ -1,6 +1,6 @@
 import { buildSubmissionPayload } from '../../packages/dynamic-form/src/lib/mappers/submission-payload.mapper';
 import { buildFormGroup } from '../../packages/dynamic-form/src/lib/validators/control-validator.adapter';
-import type { FieldDefinition } from '@primeng-dynamic-form/core';
+import type { FieldDefinition } from '@linkiez/primeng-dynamic-form';
 
 describe('Unit: US1 - Submit payload builder', () => {
   const fields: FieldDefinition[] = [

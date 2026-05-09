@@ -3,8 +3,8 @@
  *
  * Validates deterministic scoring formula.
  */
-import { computePriorityScore } from '@primeng-dynamic-form/core';
-import type { PriorityScoreInput } from '@primeng-dynamic-form/core';
+import { computePriorityScore } from '@linkiez/primeng-dynamic-form';
+import type { PriorityScoreInput } from '@linkiez/primeng-dynamic-form';
 
 describe('computePriorityScore', () => {
   it('should compute P1 high-risk score correctly', () => {

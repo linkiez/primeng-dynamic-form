@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
-import { DynamicFormComponent } from '@primeng-dynamic-form/core';
-import type { FormSchema } from '@primeng-dynamic-form/core';
+import { DynamicFormComponent } from '@linkiez/primeng-dynamic-form';
+import type { FormSchema } from '@linkiez/primeng-dynamic-form';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({

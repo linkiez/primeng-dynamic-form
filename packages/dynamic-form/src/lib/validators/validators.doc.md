@@ -1,7 +1,7 @@
 # Module: validators
 
 **Path**: `packages/dynamic-form/src/lib/validators/`
-**Package**: `@primeng-dynamic-form/core`
+**Package**: `@linkiez/primeng-dynamic-form`
 
 ## Responsibility
 

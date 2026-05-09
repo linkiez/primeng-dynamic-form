@@ -9,11 +9,11 @@ import type {
   HardeningEvidence,
   HardeningGateResult,
   ReleaseReadinessResult,
-} from '@primeng-dynamic-form/core';
+} from '@linkiez/primeng-dynamic-form';
 import {
   HARDENING_CONTROLS,
   MANDATORY_GATE_KEYS,
-} from '@primeng-dynamic-form/core';
+} from '@linkiez/primeng-dynamic-form';
 
 describe('Hardening Controls Contract', () => {
   describe('HARDENING_CONTROLS constant', () => {

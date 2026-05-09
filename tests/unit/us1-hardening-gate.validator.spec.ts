@@ -7,8 +7,8 @@ import {
   validateHardeningGate,
   HARDENING_CONTROLS,
   MANDATORY_GATE_KEYS,
-} from '@primeng-dynamic-form/core';
-import type { HardeningControl, HardeningEvidence } from '@primeng-dynamic-form/core';
+} from '@linkiez/primeng-dynamic-form';
+import type { HardeningControl, HardeningEvidence } from '@linkiez/primeng-dynamic-form';
 
 function makeEvidence(overrides: Partial<HardeningEvidence>[] = []): HardeningEvidence[] {
   const base = MANDATORY_GATE_KEYS.map((key) => ({

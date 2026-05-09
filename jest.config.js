@@ -15,7 +15,7 @@ module.exports = {
     ],
   },
   moduleNameMapper: {
-    '@primeng-dynamic-form/core': '<rootDir>/packages/dynamic-form/src/public-api.ts',
+    '@linkiez/primeng-dynamic-form': '<rootDir>/packages/dynamic-form/src/public-api.ts',
   },
   moduleFileExtensions: ['ts', 'html', 'js', 'json', 'mjs'],
   collectCoverageFrom: [

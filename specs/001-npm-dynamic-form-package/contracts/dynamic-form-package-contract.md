@@ -4,7 +4,7 @@
 Contrato publico de consumo do pacote NPM para Angular 20 + PrimeNG 20.
 
 ## Package Entry Points
-- `@primeng-dynamic-form/core`
+- `@linkiez/primeng-dynamic-form`
 
 ## Exposed Types
 - `FormSchema`

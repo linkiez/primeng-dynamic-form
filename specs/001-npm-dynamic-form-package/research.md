@@ -51,7 +51,7 @@
 ## Implementation Notes (v0.1.0)
 
 ### Toolchain
-- **ng-packagr 20** via `ng-package.json` para build de biblioteca Angular; saida em `dist/@primeng-dynamic-form/core`.
+- **ng-packagr 20** via `ng-package.json` para build de biblioteca Angular; saida em `dist/@linkiez/primeng-dynamic-form`.
 - **jest-preset-angular 14.4** + **Jest 29** com ambiente `jsdom`; setup via `setupZoneTestEnv()` de `jest-preset-angular/setup-env/zone`.
 - **ESLint 9** com flat config em `eslint.config.mjs`; plugin `@typescript-eslint/eslint-plugin@8`.
 - **TypeScript 5.8.x** — versao minima necessaria por exigencia de peer deps do `@angular-devkit/build-angular@20`.
@@ -64,7 +64,7 @@
 ### Decisoes de implementacao descobertas durante desenvolvimento
 
 **D8: Alias de modulo para testes**
-- `tsconfig.spec.json` precisa de `paths: { "@primeng-dynamic-form/core": ["packages/dynamic-form/src/public-api.ts"] }` para resolver o alias nos testes sem build previa.
+- `tsconfig.spec.json` precisa de `paths: { "@linkiez/primeng-dynamic-form": ["packages/dynamic-form/src/public-api.ts"] }` para resolver o alias nos testes sem build previa.
 - `jest.config.js` tambem precisa de `moduleNameMapper` correspondente.
 
 **D9: Cleanup de subscricoes com Subject + takeUntil**

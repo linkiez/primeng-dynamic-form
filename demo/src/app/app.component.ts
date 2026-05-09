@@ -10,7 +10,7 @@ import {
   FormSchema,
   FormSubmissionPayload,
   DynamicFormConfiguration,
-} from '@primeng-dynamic-form/core';
+} from '@linkiez/primeng-dynamic-form';
 
 @Component({
   selector: 'app-root',
@@ -58,7 +58,7 @@ import {
         </p>
 
         <div class="hero-install">
-          <pre><code>npm install &#64;primeng-dynamic-form/core</code></pre>
+          <pre><code>npm install &#64;primeng/primeng-dynamic-form</code></pre>
         </div>
 
         <div class="hero-features">
@@ -329,7 +329,7 @@ import {
     <footer class="site-footer">
       <div class="container">
         <p>
-          <strong>&#64;primeng-dynamic-form/core</strong> v0.1.0 &nbsp;·&nbsp;
+          <strong>&#64;primeng/primeng-dynamic-form</strong> v0.1.0 &nbsp;·&nbsp;
           Angular 20 + PrimeNG 20 &nbsp;·&nbsp;
           Licença MIT
         </p>
@@ -682,7 +682,7 @@ export class AppComponent {
 // />`;
 
   // ── Quick Start snippets ──
-  importSnippet = `import { DynamicFormComponent } from '@primeng-dynamic-form/core';
+  importSnippet = `import { DynamicFormComponent } from '@linkiez/primeng-dynamic-form';
 
 @Component({
   standalone: true,
@@ -691,7 +691,7 @@ export class AppComponent {
 })
 export class MyComponent { }`;
 
-  schemaSnippet = `import type { FormSchema, FormSubmissionPayload } from '@primeng-dynamic-form/core';
+  schemaSnippet = `import type { FormSchema, FormSubmissionPayload } from '@linkiez/primeng-dynamic-form';
 
 schema: FormSchema = {
   schemaVersion: '1.0',

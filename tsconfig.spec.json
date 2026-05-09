@@ -7,7 +7,7 @@
     "module": "CommonJS",
     "moduleResolution": "node",
     "paths": {
-      "@primeng-dynamic-form/core": ["packages/dynamic-form/src/public-api.ts"]
+      "@linkiez/primeng-dynamic-form": ["packages/dynamic-form/src/public-api.ts"]
     }
   },
   "include": [

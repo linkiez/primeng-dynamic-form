@@ -1,4 +1,4 @@
-import type { FormSubmissionPayload } from '@primeng-dynamic-form/core';
+import type { FormSubmissionPayload } from '@linkiez/primeng-dynamic-form';
 
 describe('Contract: US2 - Validation error payload shape', () => {
   it('should FormSubmissionPayload have valid=false when errors exist', () => {

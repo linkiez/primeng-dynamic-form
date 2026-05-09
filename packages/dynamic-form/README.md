@@ -1,11 +1,11 @@
-# @primeng-dynamic-form/core
+# @linkiez/primeng-dynamic-form
 
 Angular 20 + PrimeNG 20 library for schema-driven dynamic forms.
 
 ## Installation
 
 ```bash
-npm install @primeng-dynamic-form/core
+npm install @linkiez/primeng-dynamic-form
 ```
 
 **Peer dependencies** (must be installed in your project):
@@ -18,7 +18,7 @@ npm install @primeng-dynamic-form/core
 
 ```typescript
 import { Component } from '@angular/core';
-import { DynamicFormComponent, FormSchema, FormSubmissionPayload } from '@primeng-dynamic-form/core';
+import { DynamicFormComponent, FormSchema, FormSubmissionPayload } from '@linkiez/primeng-dynamic-form';
 
 @Component({
   selector: 'app-example',
@@ -103,7 +103,7 @@ fields: [
 The optional `[config]` input allows customizing behavior and layout:
 
 ```typescript
-import { DynamicFormConfiguration } from '@primeng-dynamic-form/core';
+import { DynamicFormConfiguration } from '@linkiez/primeng-dynamic-form';
 
 config: DynamicFormConfiguration = {
   showSubmitButton: true,    // default: true
@@ -194,7 +194,7 @@ Before publishing a new version to NPM:
 
 5. **Dry-run** — verify package contents from the `dist/` folder:
    ```bash
-   cd dist/@primeng-dynamic-form/core
+   cd dist/@linkiez/primeng-dynamic-form
    npm pack --dry-run
    ```
 

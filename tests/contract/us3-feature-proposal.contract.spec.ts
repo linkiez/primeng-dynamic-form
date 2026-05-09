@@ -7,12 +7,12 @@ import type {
   FeatureProposal,
   RoadmapSlice,
   CompatibilityImpactValidationResult,
-} from '@primeng-dynamic-form/core';
+} from '@linkiez/primeng-dynamic-form';
 
 import {
   validateCompatibilityImpact,
   buildRoadmapSlice,
-} from '@primeng-dynamic-form/core';
+} from '@linkiez/primeng-dynamic-form';
 
 describe('US3: Feature Proposal Contract', () => {
   describe('FeatureProposal type', () => {

@@ -1,6 +1,6 @@
 # Security Review: feature/002-hardening-new-features
 
-**Package**: `@primeng-dynamic-form/core`
+**Package**: `@linkiez/primeng-dynamic-form`
 **Scope**: New symbols added in US1, US2, US3
 **Standard**: OWASP Top 10 applied to library code
 
