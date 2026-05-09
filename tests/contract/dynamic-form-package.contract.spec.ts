@@ -75,8 +75,8 @@ describe('Contract: @linkiez/primeng-dynamic-form exports', () => {
   });
 
   describe('Constants', () => {
-    it('should export SUPPORTED_FIELD_TYPES with 9 types', () => {
-      expect(SUPPORTED_FIELD_TYPES).toHaveLength(9);
+    it('should export SUPPORTED_FIELD_TYPES with 12 types', () => {
+      expect(SUPPORTED_FIELD_TYPES).toHaveLength(12);
       expect(SUPPORTED_FIELD_TYPES).toContain('text');
       expect(SUPPORTED_FIELD_TYPES).toContain('email');
       expect(SUPPORTED_FIELD_TYPES).toContain('password');
@@ -86,6 +86,9 @@ describe('Contract: @linkiez/primeng-dynamic-form exports', () => {
       expect(SUPPORTED_FIELD_TYPES).toContain('checkbox');
       expect(SUPPORTED_FIELD_TYPES).toContain('radio');
       expect(SUPPORTED_FIELD_TYPES).toContain('date');
+      expect(SUPPORTED_FIELD_TYPES).toContain('date-range');
+      expect(SUPPORTED_FIELD_TYPES).toContain('file');
+      expect(SUPPORTED_FIELD_TYPES).toContain('custom');
     });
 
     it('should export ERROR_CODES with expected keys', () => {

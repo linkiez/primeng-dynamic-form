@@ -17,9 +17,9 @@ describe('Contract: US1 - Entry points and component symbols', () => {
     expect(metadata?.standalone).toBe(true);
   });
 
-  it('should SUPPORTED_FIELD_TYPES be readonly and contain exactly 9 types', () => {
+  it('should SUPPORTED_FIELD_TYPES be readonly and contain exactly 12 types', () => {
     expect(Array.isArray(SUPPORTED_FIELD_TYPES)).toBe(true);
-    expect(SUPPORTED_FIELD_TYPES).toHaveLength(9);
+    expect(SUPPORTED_FIELD_TYPES).toHaveLength(12);
   });
 
   it('should ERROR_CODES be a frozen-like constant object', () => {

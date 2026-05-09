@@ -7,6 +7,9 @@ const DEFAULT_CONFIG: Required<DynamicFormConfiguration> = {
   resetLabel: 'Limpar',
   emitOnChange: false,
   layoutMode: 'vertical',
+  locale: 'pt-BR',
+  fallbackLocale: 'pt-BR',
+  translations: {},
 };
 
 export function resolveConfig(config?: DynamicFormConfiguration): Required<DynamicFormConfiguration> {

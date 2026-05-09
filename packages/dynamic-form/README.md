@@ -64,6 +64,9 @@ export class ExampleComponent {
 | `checkbox` | `p-checkbox`       |
 | `radio`    | `p-radiobutton`    |
 | `date`     | `p-datepicker`     |
+| `date-range` | `p-datepicker` (range mode) |
+| `file`     | `p-fileupload`     |
+| `custom`   | fallback renderer (`pInputText`) |
 
 ## Validation
 
@@ -112,6 +115,20 @@ config: DynamicFormConfiguration = {
   resetLabel: 'Limpar',      // default: 'Limpar'
   emitOnChange: true,        // default: false — emit formChange on each value change
   layoutMode: 'horizontal',  // default: 'vertical' | 'horizontal' | 'grid'
+  locale: 'en-US',
+  fallbackLocale: 'pt-BR',
+  translations: {
+    'pt-BR': {
+      'form.submitLabel': 'Enviar',
+      'form.resetLabel': 'Limpar',
+      'fields.name.label': 'Nome',
+    },
+    'en-US': {
+      'form.submitLabel': 'Submit',
+      'form.resetLabel': 'Reset',
+      'fields.name.label': 'Name',
+    },
+  },
 };
 ```
 
@@ -124,6 +141,8 @@ config: DynamicFormConfiguration = {
   [initialValues]="{ name: 'Padrão' }"
   (formSubmit)="onSubmit($event)"
   (formChange)="onValueChange($event)"
+  (beforeSubmit)="onBeforeSubmit($event)"
+  (afterReset)="onAfterReset($event)"
 />
 ```
 
@@ -143,6 +162,8 @@ config: DynamicFormConfiguration = {
 |--------------|--------------------------------------------|----------------------------------------------------|
 | `formSubmit` | `EventEmitter<FormSubmissionPayload>`      | Emitted on valid form submission                   |
 | `formChange` | `EventEmitter<Record<string, unknown>>`    | Emitted on each value change (if `emitOnChange=true`) |
+| `beforeSubmit` | `EventEmitter<Record<string, unknown>>`  | Emitted right before payload generation on valid submit |
+| `afterReset` | `EventEmitter<Record<string, unknown>>`    | Emitted right after form reset |
 
 ### `FormSubmissionPayload`
 
@@ -165,7 +186,7 @@ interface FormSubmissionPayload {
 
 - Only Angular 20 + PrimeNG 20 officially supported.
 - Only synchronous validators (async validation is out of v1 scope).
-- Supported field types: `text`, `email`, `password`, `number`, `textarea`, `select`, `checkbox`, `radio`, `date`.
+- Supported field types: `text`, `email`, `password`, `number`, `textarea`, `select`, `checkbox`, `radio`, `date`, `date-range`, `file`, `custom`.
 - `schemaVersion` must be `"1.0"`.
 
 ## Publish Checklist

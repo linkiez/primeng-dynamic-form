@@ -57,6 +57,17 @@ Default values:
 | `resetLabel` | `'Limpar'` |
 | `emitOnChange` | `false` |
 | `layoutMode` | `'vertical'` |
+| `locale` | `'pt-BR'` |
+| `fallbackLocale` | `'pt-BR'` |
+| `translations` | `{}` |
+
+### `i18n.mapper.ts`
+
+| Symbol | Signature | Description |
+|--------|-----------|-------------|
+| `resolveTranslation` | `(input: { key, fallbackText, locale, fallbackLocale, translations }) => string` | Resolve translation by locale with fallback locale and fallback text |
+
+Resolution order: active locale key -> fallback locale key -> fallback text.
 
 ## Key Decisions
 

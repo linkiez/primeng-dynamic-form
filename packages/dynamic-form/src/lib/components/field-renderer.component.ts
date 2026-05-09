@@ -9,6 +9,7 @@ import { Select } from 'primeng/select';
 import { Checkbox } from 'primeng/checkbox';
 import { RadioButton } from 'primeng/radiobutton';
 import { DatePicker } from 'primeng/datepicker';
+import { FileUpload } from 'primeng/fileupload';
 import { FloatLabel } from 'primeng/floatlabel';
 import { Message } from 'primeng/message';
 import { FieldDefinition } from '../models/dynamic-form.types';
@@ -28,6 +29,7 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
     Checkbox,
     RadioButton,
     DatePicker,
+    FileUpload,
     FloatLabel,
     Message,
   ],
@@ -42,6 +44,7 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
               [formControl]="fieldControl"
               [placeholder]="field().placeholder ?? ''"
               [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+              [attr.aria-describedby]="ariaDescribedBy"
             />
             <label [for]="field().key">{{ field().label }}</label>
           </p-floatlabel>
@@ -55,6 +58,7 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
               [formControl]="fieldControl"
               [placeholder]="field().placeholder ?? ''"
               [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+              [attr.aria-describedby]="ariaDescribedBy"
             />
             <label [for]="field().key">{{ field().label }}</label>
           </p-floatlabel>
@@ -68,6 +72,7 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
               [feedback]="false"
               [toggleMask]="true"
               [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+              [attr.aria-describedby]="ariaDescribedBy"
             />
             <label [for]="field().key">{{ field().label }}</label>
           </p-floatlabel>
@@ -79,6 +84,7 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
               [formControl]="fieldControl"
               [placeholder]="field().placeholder ?? ''"
               [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+              [attr.aria-describedby]="ariaDescribedBy"
             />
             <label [for]="field().key">{{ field().label }}</label>
           </p-floatlabel>
@@ -91,6 +97,7 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
               [formControl]="fieldControl"
               [placeholder]="field().placeholder ?? ''"
               [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+              [attr.aria-describedby]="ariaDescribedBy"
               rows="3"
             ></textarea>
             <label [for]="field().key">{{ field().label }}</label>
@@ -105,6 +112,7 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
             optionValue="value"
             [placeholder]="field().placeholder ?? field().label"
             [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+            [attr.aria-describedby]="ariaDescribedBy"
           />
         }
         @case ('checkbox') {
@@ -114,6 +122,7 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
               [formControl]="fieldControl"
               [binary]="true"
               [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+              [attr.aria-describedby]="ariaDescribedBy"
             />
             <label [for]="field().key" class="pdf-field__checkbox-label">
               {{ field().label }}
@@ -125,6 +134,7 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
             class="pdf-field__radio-group"
             role="radiogroup"
             [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+            [attr.aria-describedby]="ariaDescribedBy"
           >
             <span class="pdf-field__radio-label">{{ field().label }}</span>
             @for (option of field().options ?? []; track option.value) {
@@ -147,14 +157,68 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
               [placeholder]="field().placeholder ?? ''"
               [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
               dateFormat="dd/mm/yy"
+              [attr.aria-describedby]="ariaDescribedBy"
+            />
+            <label [for]="field().key">{{ field().label }}</label>
+          </p-floatlabel>
+        }
+        @case ('date-range') {
+          <p-floatlabel variant="on">
+            <p-datepicker
+              [inputId]="field().key"
+              [formControl]="fieldControl"
+              [placeholder]="field().placeholder ?? ''"
+              [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+              selectionMode="range"
+              dateFormat="dd/mm/yy"
+              [attr.aria-describedby]="ariaDescribedBy"
+            />
+            <label [for]="field().key">{{ field().label }}</label>
+          </p-floatlabel>
+        }
+        @case ('file') {
+          <div class="pdf-field__file">
+            <label [for]="field().key" class="pdf-field__file-label">{{ field().label }}</label>
+            <p-fileupload
+              [name]="field().key"
+              mode="basic"
+              [customUpload]="true"
+              [auto]="false"
+              [chooseLabel]="field().label"
+              [showUploadButton]="false"
+              [showCancelButton]="false"
+              [multiple]="field().multiple ?? false"
+              [accept]="field().accept ?? ''"
+              [maxFileSize]="field().maxFileSizeBytes"
+              [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+              [attr.aria-describedby]="ariaDescribedBy"
+              (onSelect)="onFileSelect($event)"
+            />
+          </div>
+        }
+        @case ('custom') {
+          <p-floatlabel variant="on">
+            <input
+              pInputText
+              [id]="field().key"
+              [formControl]="fieldControl"
+              [placeholder]="field().placeholder ?? ''"
+              [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+              [attr.aria-describedby]="ariaDescribedBy"
             />
             <label [for]="field().key">{{ field().label }}</label>
           </p-floatlabel>
         }
       }
 
+      @if (descriptionText) {
+        <span [id]="descriptionId" class="pdf-visually-hidden">{{ descriptionText }}</span>
+      }
+
       @if (hasError && errorMessage) {
-        <p-message severity="error" [text]="errorMessage" />
+        <div [id]="errorId" aria-live="assertive" role="alert">
+          <p-message severity="error" [text]="errorMessage" />
+        </div>
       }
     </div>
   `,
@@ -181,6 +245,26 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
         gap: 0.5rem;
         align-items: center;
       }
+
+      .pdf-field__file {
+        display: grid;
+        gap: 0.5rem;
+      }
+
+      .pdf-field__file-label {
+        font-size: 0.95rem;
+      }
+
+      .pdf-visually-hidden {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+      }
     `,
   ],
 })
@@ -201,5 +285,39 @@ export class FieldRendererComponent {
     const control = this.fieldControl;
     if (!control?.errors) return null;
     return getFirstErrorMessage(control.errors);
+  }
+
+  protected get descriptionId(): string {
+    return this.field().ui?.ariaDescriptionId ?? `${this.field().key}_description`;
+  }
+
+  protected get descriptionText(): string | undefined {
+    return this.field().ui?.ariaDescription;
+  }
+
+  protected get errorId(): string {
+    return `${this.field().key}_error`;
+  }
+
+  protected get ariaDescribedBy(): string | null {
+    const tokens: string[] = [];
+    if (this.descriptionText) {
+      tokens.push(this.descriptionId);
+    }
+    if (this.hasError && this.errorMessage) {
+      tokens.push(this.errorId);
+    }
+
+    return tokens.length > 0 ? tokens.join(' ') : null;
+  }
+
+  protected onFileSelect(event: unknown): void {
+    const payload = event as { files?: File[] };
+    const files = payload.files ?? [];
+    const value = this.field().multiple ? files : files[0] ?? null;
+
+    this.fieldControl.setValue(value);
+    this.fieldControl.markAsDirty();
+    this.fieldControl.markAsTouched();
   }
 }

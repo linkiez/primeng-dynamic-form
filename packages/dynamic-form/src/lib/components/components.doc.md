@@ -30,6 +30,8 @@ internal renderer used by the form, but is also exported for advanced consumer u
 |--------|------|-------------|
 | `formSubmit` | `FormSubmissionPayload` | Ao submit de formulario valido |
 | `formChange` | `Record<string, unknown>` | A cada mudanca de valor, quando `config.emitOnChange = true` |
+| `beforeSubmit` | `Record<string, unknown>` | Imediatamente antes de gerar o payload no submit valido |
+| `afterReset` | `Record<string, unknown>` | Depois de executar `formGroup.reset()` |
 
 ### Lifecycle
 
@@ -41,6 +43,7 @@ internal renderer used by the form, but is also exported for advanced consumer u
 - **Schema errors**: if `parseAndValidateSchema` returns errors, a `.pdf-config-error` block is rendered instead of the form.
 - **Submit blocking**: `onSubmit()` calls `formGroup.markAllAsTouched()` before validity check — forces validation display on untouched fields.
 - **Reset**: `onReset()` calls `formGroup.reset()` to restore initial values.
+- **Lifecycle hooks**: `onSubmit()` emite `beforeSubmit` com `getRawValue()` antes do payload; `onReset()` emite `afterReset` apos reset.
 - **Layout class**: `formClass` is set to `pdf-form pdf-form--{layoutMode}` (e.g. `pdf-form--vertical`, `pdf-form--horizontal`).
 - **Subscription cleanup**: `valueChanges` uses `takeUntil(destroy$)` pattern (see `research.md` D9).
 
@@ -90,6 +93,9 @@ internal renderer used by the form, but is also exported for advanced consumer u
 | `checkbox` | `p-checkbox` (binary) | `.pdf-field__checkbox` |
 | `radio` | `p-radiobutton` (per option) | `.pdf-field__radio-group` |
 | `date` | `p-datepicker` | `p-floatlabel` |
+| `date-range` | `p-datepicker` (`selectionMode="range"`) | `p-floatlabel` |
+| `file` | `p-fileupload` (`mode="basic"`, `customUpload=true`) | `.pdf-field__file` |
+| `custom` | `pInputText` (fallback renderer) | `p-floatlabel` |
 
 ### Error Display
 

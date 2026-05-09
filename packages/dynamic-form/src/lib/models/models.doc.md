@@ -16,17 +16,19 @@ Core contract types exported in the public API.
 
 | Symbol | Kind | Description |
 |--------|------|-------------|
-| `FieldType` | union type | 9 supported field types: `text`, `email`, `password`, `number`, `textarea`, `select`, `checkbox`, `radio`, `date` |
+| `FieldType` | union type | 12 supported field types: `text`, `email`, `password`, `number`, `textarea`, `select`, `checkbox`, `radio`, `date`, `date-range`, `file`, `custom` |
 | `SUPPORTED_FIELD_TYPES` | readonly array | Runtime constant mirror of `FieldType` values |
 | `ValidatorName` | union type | 8 built-in validator names: `required`, `minLength`, `maxLength`, `min`, `max`, `pattern`, `email`, `customSync` |
 | `FieldOption` | interface | `{ label: string; value: string \| number \| boolean }` |
 | `ValidationRule` | interface | `{ name, params?, message? }` — declarative rule per field |
-| `UIHints` | interface | `{ tooltip?, ariaLabel?, ariaDescription? }` — accessibility hints |
+| `UIHints` | interface | `{ tooltip?, ariaLabel?, ariaDescription?, ariaDescriptionId? }` — accessibility hints |
+| `TranslationDictionary` | type | `Record<string, string>` for locale message entries |
+| `TranslationsByLocale` | type | `Record<locale, TranslationDictionary>` |
 | `LayoutConfig` | interface | `{ columns?, responsive? }` — field layout overrides |
 | `SubmitConfig` | interface | `{ mode?, debounceMs? }` — submit behavior (reserved for future use in v1) |
-| `FieldDefinition` | interface | Full field descriptor: key, type, label, options, validators, UIHints, etc. |
+| `FieldDefinition` | interface | Full field descriptor: key, type, label, i18nKey, options, validators, UIHints, plus file options (`accept`, `multiple`, `maxFileSizeBytes`) |
 | `FormSchema` | interface | Root input: `{ schemaVersion, formId?, fields, layout?, submit? }` |
-| `DynamicFormConfiguration` | interface | Component config: submit/reset buttons, labels, layoutMode, emitOnChange |
+| `DynamicFormConfiguration` | interface | Component config: submit/reset buttons, labels, layoutMode, emitOnChange, `locale`, `fallbackLocale`, and `translations` |
 | `FormSubmissionPayload` | interface | Submit output: `{ valid, values, errors }` |
 
 ### `error-codes.ts`

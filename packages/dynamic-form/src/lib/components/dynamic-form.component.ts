@@ -20,6 +20,7 @@ import {
 import { buildFormGroup } from '../validators/control-validator.adapter';
 import { buildSubmissionPayload } from '../mappers/submission-payload.mapper';
 import { resolveConfig } from '../mappers/config-defaults.mapper';
+import { resolveTranslation } from '../mappers/i18n.mapper';
 import { parseAndValidateSchema } from '../mappers/schema.mapper';
 import { DynamicFormConfigError } from '../models/error-codes';
 import { FieldRendererComponent } from './field-renderer.component';
@@ -96,6 +97,8 @@ export class DynamicFormComponent implements OnInit, OnChanges, OnDestroy {
 
   readonly formSubmit = output<FormSubmissionPayload>();
   readonly formChange = output<Record<string, unknown>>();
+  readonly beforeSubmit = output<Record<string, unknown>>();
+  readonly afterReset = output<Record<string, unknown>>();
 
   protected formGroup!: FormGroup;
   protected resolvedConfig!: Required<DynamicFormConfiguration>;
@@ -122,6 +125,20 @@ export class DynamicFormComponent implements OnInit, OnChanges, OnDestroy {
     this.destroy$.next();
 
     this.resolvedConfig = resolveConfig(this.config());
+    this.resolvedConfig.submitLabel = resolveTranslation({
+      key: 'form.submitLabel',
+      fallbackText: this.resolvedConfig.submitLabel,
+      locale: this.resolvedConfig.locale,
+      fallbackLocale: this.resolvedConfig.fallbackLocale,
+      translations: this.resolvedConfig.translations,
+    });
+    this.resolvedConfig.resetLabel = resolveTranslation({
+      key: 'form.resetLabel',
+      fallbackText: this.resolvedConfig.resetLabel,
+      locale: this.resolvedConfig.locale,
+      fallbackLocale: this.resolvedConfig.fallbackLocale,
+      translations: this.resolvedConfig.translations,
+    });
     this.formClass = `pdf-form pdf-form--${this.resolvedConfig.layoutMode}`;
 
     const { errors } = parseAndValidateSchema(this.schema());
@@ -129,7 +146,32 @@ export class DynamicFormComponent implements OnInit, OnChanges, OnDestroy {
 
     if (errors.length > 0) return;
 
-    this.visibleFields = this.schema().fields.filter((f) => !f.hidden);
+    this.visibleFields = this.schema().fields
+      .filter((f) => !f.hidden)
+      .map((field) => {
+        const labelKey = field.i18nKey ? `${field.i18nKey}.label` : `fields.${field.key}.label`;
+        const placeholderKey = field.i18nKey
+          ? `${field.i18nKey}.placeholder`
+          : `fields.${field.key}.placeholder`;
+
+        return {
+          ...field,
+          label: resolveTranslation({
+            key: labelKey,
+            fallbackText: field.label,
+            locale: this.resolvedConfig.locale,
+            fallbackLocale: this.resolvedConfig.fallbackLocale,
+            translations: this.resolvedConfig.translations,
+          }),
+          placeholder: resolveTranslation({
+            key: placeholderKey,
+            fallbackText: field.placeholder ?? '',
+            locale: this.resolvedConfig.locale,
+            fallbackLocale: this.resolvedConfig.fallbackLocale,
+            translations: this.resolvedConfig.translations,
+          }),
+        };
+      });
     this.formGroup = buildFormGroup(this.visibleFields, this.initialValues());
 
     if (this.resolvedConfig.emitOnChange) {
@@ -144,11 +186,14 @@ export class DynamicFormComponent implements OnInit, OnChanges, OnDestroy {
       this.formGroup.markAllAsTouched();
       return;
     }
+
+    this.beforeSubmit.emit(this.formGroup.getRawValue() as Record<string, unknown>);
     const payload = buildSubmissionPayload(this.formGroup);
     this.formSubmit.emit(payload);
   }
 
   protected onReset(): void {
     this.formGroup.reset();
+    this.afterReset.emit(this.formGroup.getRawValue() as Record<string, unknown>);
   }
 }
