@@ -14,13 +14,14 @@
     [
       "@semantic-release/npm",
       {
-        "pkgRoot": "dist/dynamic-form"
+        "pkgRoot": "dist/@linkiez/primeng-dynamic-form"
       }
     ],
     [
       "@semantic-release/github",
       {
-        "successComment": false
+        "successComment": false,
+        "labels": []
       }
     ],
     [
