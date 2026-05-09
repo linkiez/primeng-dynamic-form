@@ -1,3 +1,11 @@
+## [1.0.2](https://github.com/linkiez/primeng-dynamic-form/compare/v1.0.1...v1.0.2) (2026-05-09)
+
+
+### Bug Fixes
+
+* **ci:** evitar cache yarn no setup-node antes do corepack ([95e7609](https://github.com/linkiez/primeng-dynamic-form/commit/95e76099244b9b48387903d7ca2f0e4283d8cb1b))
+* **ci:** migrar workflow do pages para Yarn Berry ([7271be9](https://github.com/linkiez/primeng-dynamic-form/commit/7271be9a4c9c40af0986a56b41c82960c6dab24a))
+
 ## [1.0.1](https://github.com/linkiez/primeng-dynamic-form/compare/v1.0.0...v1.0.1) (2026-05-09)
 
 
