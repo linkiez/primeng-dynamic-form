@@ -1,6 +1,6 @@
 # @linkiez/primeng-dynamic-form
 
-Angular 20 + PrimeNG 20 library for schema-driven dynamic forms.
+Angular 21 + PrimeNG 21 library for schema-driven dynamic forms.
 
 ## Installation
 
@@ -9,10 +9,10 @@ npm install @linkiez/primeng-dynamic-form
 ```
 
 **Peer dependencies** (must be installed in your project):
-- `@angular/common` ^20.0.0
-- `@angular/core` ^20.0.0
-- `@angular/forms` ^20.0.0
-- `primeng` ^20.0.0
+- `@angular/common` ^21.0.0
+- `@angular/core` ^21.0.0
+- `@angular/forms` ^21.0.0
+- `primeng` ^21.0.0
 
 ## Quick Start
 
@@ -180,11 +180,11 @@ interface FormSubmissionPayload {
 - This package follows **Semantic Versioning**.
 - **Breaking changes** to the public API require a major version bump.
 - **Schema changes** (e.g., new `schemaVersion`) are documented with migration notes in `CHANGELOG.md`.
-- v1 compatibility is limited to Angular 20 + PrimeNG 20.
+- v1 compatibility is limited to Angular 21 + PrimeNG 21.
 
 ## v1 Limitations
 
-- Only Angular 20 + PrimeNG 20 officially supported.
+- Only Angular 21 + PrimeNG 21 officially supported.
 - Only synchronous validators (async validation is out of v1 scope).
 - Supported field types: `text`, `email`, `password`, `number`, `textarea`, `select`, `checkbox`, `radio`, `date`, `date-range`, `file`, `custom`.
 - `schemaVersion` must be `"1.0"`.
@@ -226,6 +226,6 @@ Before publishing a new version to NPM:
 
 7. **Tag the release**:
    ```bash
-   git tag v0.x.x
-   git push origin v0.x.x
+  git tag v1.0.x
+  git push origin v1.0.x
    ```
