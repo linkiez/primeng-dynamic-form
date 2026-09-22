@@ -11,7 +11,6 @@ import { RadioButton } from 'primeng/radiobutton';
 import { DatePicker } from 'primeng/datepicker';
 import { FileUpload } from 'primeng/fileupload';
 import { FloatLabel } from 'primeng/floatlabel';
-import { Message } from 'primeng/message';
 import { FieldDefinition } from '../models/dynamic-form.types';
 import { getFirstErrorMessage } from '../mappers/error-message.mapper';
 
@@ -30,7 +29,6 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
     DatePicker,
     FileUpload,
     FloatLabel,
-    Message
 ],
   template: `
     <div class="pdf-field" [class.pdf-field--error]="hasError">
@@ -216,7 +214,9 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
 
       @if (hasError && errorMessage) {
         <div [id]="errorId" aria-live="assertive" role="alert">
-          <p-message severity="error">{{ errorMessage }}</p-message>
+          <p class="p-error text-xs pdf-field__error">
+            <small>{{ errorMessage }}</small>
+          </p>
         </div>
       }
     </div>
@@ -252,6 +252,12 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
 
       .pdf-field__file-label {
         font-size: 0.95rem;
+      }
+
+      .pdf-field__error {
+        display: block;
+        margin-top: 4px;
+        margin-bottom: 0;
       }
 
       .pdf-visually-hidden {

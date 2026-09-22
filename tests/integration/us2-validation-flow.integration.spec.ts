@@ -73,9 +73,13 @@ describe('Integration: US2 - Validation flow', () => {
     form.dispatchEvent(new Event('submit'));
     fixture.detectChanges();
 
-    const message = fixture.nativeElement.querySelector(
-      '#email_error .p-message-text',
+    const message = fixture.nativeElement.querySelector('#email_error small');
+    const messageContainer = fixture.nativeElement.querySelector(
+      '#email_error > p.pdf-field__error',
     );
+    expect(messageContainer).toBeTruthy();
+    expect(messageContainer.classList).toContain('p-error');
+    expect(messageContainer.classList).toContain('text-xs');
     expect(message?.textContent).toContain('Email é obrigatório');
   });
 
