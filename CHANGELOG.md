@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/linkiez/primeng-dynamic-form/compare/v1.1.0...v1.1.1) (2026-09-22)
+
+
+### Bug Fixes
+
+* corrigir resolucao estatica de componentes ([dbe7a88](https://github.com/linkiez/primeng-dynamic-form/commit/dbe7a885e1d2908d626800c1a9288eb93a5505ec))
+
 # [1.1.0](https://github.com/linkiez/primeng-dynamic-form/compare/v1.0.6...v1.1.0) (2026-09-22)
 
 
