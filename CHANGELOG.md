@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/linkiez/primeng-dynamic-form/compare/v1.0.2...v1.0.3) (2026-09-22)
+
+
+### Bug Fixes
+
+* exibir mensagens de validacao no formulario dinamico ([1fd3ef8](https://github.com/linkiez/primeng-dynamic-form/commit/1fd3ef80a207b63c261e8653f19a1124b97ec907))
+
 ## [1.0.2](https://github.com/linkiez/primeng-dynamic-form/compare/v1.0.1...v1.0.2) (2026-05-09)
 
 
