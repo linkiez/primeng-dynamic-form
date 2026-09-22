@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/linkiez/primeng-dynamic-form/compare/v1.0.5...v1.0.6) (2026-09-22)
+
+
+### Bug Fixes
+
+* aplicar cor de erro nas mensagens ([b5d96fe](https://github.com/linkiez/primeng-dynamic-form/commit/b5d96fea667b6e46dd37f73bbcb4218411f2038b))
+
 ## [1.0.5](https://github.com/linkiez/primeng-dynamic-form/compare/v1.0.4...v1.0.5) (2026-09-22)
 
 
