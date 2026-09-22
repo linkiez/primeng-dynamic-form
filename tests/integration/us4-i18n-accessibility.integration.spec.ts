@@ -1,7 +1,12 @@
+/// <reference types="jest" />
+
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { DynamicFormComponent } from '@linkiez/primeng-dynamic-form';
-import type { DynamicFormConfiguration, FormSchema } from '@linkiez/primeng-dynamic-form';
+import { DynamicFormComponent } from '../../packages/dynamic-form/src/lib/components/dynamic-form.component';
+import type {
+  DynamicFormConfiguration,
+  FormSchema,
+} from '../../packages/dynamic-form/src/lib/models/dynamic-form.types';
 
 @Component({
   standalone: true,

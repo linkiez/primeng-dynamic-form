@@ -6,11 +6,11 @@ import { Tag } from 'primeng/tag';
 import { Divider } from 'primeng/divider';
 import { Message } from 'primeng/message';
 import {
-  DynamicFormComponent,
   FormSchema,
   FormSubmissionPayload,
   DynamicFormConfiguration,
 } from '@linkiez/primeng-dynamic-form';
+import { DynamicFormComponent } from '../../../packages/dynamic-form/src/lib/components/dynamic-form.component';
 
 @Component({
   selector: 'app-root',
