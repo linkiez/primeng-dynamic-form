@@ -1,4 +1,8 @@
-export function resolveErrorMessage(errorKey: string, errorValue: unknown): string {
+export function resolveErrorMessage(
+  errorKey: string,
+  errorValue: unknown,
+  fieldName = 'Campo',
+): string {
   if (errorValue && typeof errorValue === 'object') {
     const v = errorValue as Record<string, unknown>;
     if (v['message'] && typeof v['message'] === 'string') return v['message'];
@@ -6,28 +10,31 @@ export function resolveErrorMessage(errorKey: string, errorValue: unknown): stri
 
   switch (errorKey) {
     case 'required':
-      return 'Este campo é obrigatório.';
+      return `${fieldName} é obrigatório`;
     case 'email':
-      return 'Formato de email inválido.';
+      return `${fieldName} deve ter um formato de email válido`;
     case 'minlength':
-      return `Mínimo de ${(errorValue as Record<string, unknown>)['requiredLength'] as number} caracteres.`;
+      return `${fieldName} deve ter pelo menos ${(errorValue as Record<string, unknown>)['requiredLength'] as number} caracteres`;
     case 'maxlength':
-      return `Máximo de ${(errorValue as Record<string, unknown>)['requiredLength'] as number} caracteres.`;
+      return `${fieldName} deve ter no máximo ${(errorValue as Record<string, unknown>)['requiredLength'] as number} caracteres`;
     case 'min':
-      return `Valor mínimo: ${(errorValue as Record<string, unknown>)['min'] as number}.`;
+      return `${fieldName} deve ser no mínimo ${(errorValue as Record<string, unknown>)['min'] as number}`;
     case 'max':
-      return `Valor máximo: ${(errorValue as Record<string, unknown>)['max'] as number}.`;
+      return `${fieldName} deve ser no máximo ${(errorValue as Record<string, unknown>)['max'] as number}`;
     case 'pattern':
-      return 'Formato inválido.';
+      return `${fieldName} não atende ao formato exigido`;
   }
 
-  return `Valor inválido (${errorKey}).`;
+  return `${fieldName} é inválido`;
 }
 
-export function getFirstErrorMessage(errors: Record<string, unknown> | null): string | null {
+export function getFirstErrorMessage(
+  errors: Record<string, unknown> | null,
+  fieldName = 'Campo',
+): string | null {
   if (!errors) return null;
   const entries = Object.entries(errors);
   if (entries.length === 0) return null;
   const [firstKey, firstValue] = entries[0];
-  return resolveErrorMessage(firstKey, firstValue);
+  return resolveErrorMessage(firstKey, firstValue, fieldName);
 }

@@ -34,8 +34,8 @@ Throws synchronously if `raw` is not a non-null object (guard only).
 
 | Symbol | Signature | Description |
 |--------|-----------|-------------|
-| `resolveErrorMessage` | `(errorKey: string, errorValue: unknown) => string` | Returns a human-readable pt_BR message for a given Angular validation error key + value |
-| `getFirstErrorMessage` | `(errors: ValidationErrors \| null) => string \| null` | Picks the first error from an Angular `ValidationErrors` map and returns its resolved message |
+| `resolveErrorMessage` | `(errorKey: string, errorValue: unknown, fieldName?: string) => string` | Returns a `FormErrorsUtil`-compatible pt_BR message for a given Angular validation error key, value and field name |
+| `getFirstErrorMessage` | `(errors: ValidationErrors \| null, fieldName?: string) => string \| null` | Picks the first error from an Angular `ValidationErrors` map and returns its `FormErrorsUtil`-compatible message |
 
 Supported error keys: `required`, `email`, `minlength`, `maxlength`, `min`, `max`, `pattern`, `customSync`.
 Falls back to `"Campo inválido."` for unknown keys.

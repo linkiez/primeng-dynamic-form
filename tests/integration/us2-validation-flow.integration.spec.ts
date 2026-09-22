@@ -76,7 +76,7 @@ describe('Integration: US2 - Validation flow', () => {
     const message = fixture.nativeElement.querySelector(
       '#email_error .p-message-text',
     );
-    expect(message?.textContent).toContain('Este campo é obrigatório.');
+    expect(message?.textContent).toContain('Email é obrigatório');
   });
 
   it('should emit formSubmit with valid payload when form is valid', async () => {

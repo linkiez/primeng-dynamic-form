@@ -283,7 +283,7 @@ export class FieldRendererComponent {
   protected get errorMessage(): string | null {
     const control = this.fieldControl;
     if (!control?.errors) return null;
-    return getFirstErrorMessage(control.errors);
+    return getFirstErrorMessage(control.errors, this.field().label);
   }
 
   protected get descriptionId(): string {
