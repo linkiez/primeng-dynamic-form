@@ -260,6 +260,10 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
         margin-bottom: 0;
       }
 
+      .pdf-field__error small {
+        color: var(--p-error-color);
+      }
+
       .pdf-visually-hidden {
         border: 0;
         clip: rect(0 0 0 0);
