@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/linkiez/primeng-dynamic-form/compare/v1.0.4...v1.0.5) (2026-09-22)
+
+
+### Bug Fixes
+
+* usar mensagens de erro no padrao dos formularios ([7eae063](https://github.com/linkiez/primeng-dynamic-form/commit/7eae0631c391c399b74b3767bc9cd889fd7b470d))
+
 ## [1.0.4](https://github.com/linkiez/primeng-dynamic-form/compare/v1.0.3...v1.0.4) (2026-09-22)
 
 
