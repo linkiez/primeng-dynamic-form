@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/linkiez/primeng-dynamic-form/compare/v1.0.6...v1.1.0) (2026-09-22)
+
+
+### Features
+
+* **form:** adicionar tipos e configuracoes PrimeNG ([886315d](https://github.com/linkiez/primeng-dynamic-form/commit/886315dd66504cb9b040c8c6327c37990b677a8f))
+
 ## [1.0.6](https://github.com/linkiez/primeng-dynamic-form/compare/v1.0.5...v1.0.6) (2026-09-22)
 
 
