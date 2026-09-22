@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/linkiez/primeng-dynamic-form/compare/v1.0.3...v1.0.4) (2026-09-22)
+
+
+### Bug Fixes
+
+* alinhar mensagens ao formato dos formularios ([6380901](https://github.com/linkiez/primeng-dynamic-form/commit/6380901c0bbf289bced7adc777d24739add998f7))
+
 ## [1.0.3](https://github.com/linkiez/primeng-dynamic-form/compare/v1.0.2...v1.0.3) (2026-09-22)
 
 
