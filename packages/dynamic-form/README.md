@@ -1,6 +1,6 @@
 # @linkiez/primeng-dynamic-form
 
-Angular 21 + PrimeNG 21 library for schema-driven dynamic forms.
+Angular 22 + PrimeNG 22 library for schema-driven dynamic forms.
 
 ## Installation
 
@@ -9,10 +9,10 @@ npm install @linkiez/primeng-dynamic-form
 ```
 
 **Peer dependencies** (must be installed in your project):
-- `@angular/common` ^21.0.0
-- `@angular/core` ^21.0.0
-- `@angular/forms` ^21.0.0
-- `primeng` ^21.0.0
+- `@angular/common` ^22.1.0
+- `@angular/core` ^22.1.0
+- `@angular/forms` ^22.1.0
+- `primeng` ^22.1.1
 
 ## Quick Start
 
@@ -61,14 +61,79 @@ export class ExampleComponent {
 | `number`   | `p-inputnumber`    |
 | `textarea` | `pTextarea`        |
 | `select`   | `p-select`         |
+| `autocomplete` | `p-autocomplete` |
+| `cascadeselect` | `p-cascadeselect` |
 | `checkbox` | `p-checkbox`       |
 | `radio`    | `p-radiobutton`    |
+| `multiselect` | `p-multiselect` |
+| `listbox` | `p-listbox` |
+| `selectbutton` | `p-selectbutton` |
+| `togglebutton` | `p-togglebutton` |
+| `toggleswitch` | `p-toggleswitch` |
+| `colorpicker` | `p-colorpicker` |
+| `inputmask` | `p-inputmask` |
+| `inputotp` | `p-inputotp` |
+| `inputtags` | `p-inputtags` |
+| `editor` | `p-editor` |
 | `date`     | `p-datepicker`     |
 | `date-range` | `p-datepicker` (range mode) |
+| `slider` | `p-slider` |
+| `knob` | `p-knob` |
+| `rating` | `p-rating` |
+| `treeselect` | `p-treeselect` |
 | `file`     | `p-fileupload`     |
 | `custom`   | fallback renderer (`pInputText`) |
 
 ## Validation
+
+## PrimeNG Component Configuration
+
+Every field accepts `componentProps`. Supported component inputs are forwarded through explicit bindings in the renderer; `pBind` also applies compatible host attributes such as `class`, `style`, and custom DOM attributes.
+
+```typescript
+fields: [
+  {
+    key: 'status',
+    type: 'select',
+    label: 'Status',
+    options: [
+      { label: 'Ativo', value: 'active' },
+      { label: 'Inativo', value: 'inactive' },
+    ],
+    componentProps: {
+      filter: true,
+      showClear: true,
+      variant: 'filled',
+      panelStyle: { maxHeight: '20rem' },
+    },
+  },
+  {
+    key: 'birthday',
+    type: 'date',
+    label: 'Nascimento',
+    componentProps: {
+      showIcon: true,
+      showButtonBar: true,
+      dateFormat: 'dd/mm/yy',
+      view: 'month',
+    },
+  },
+  {
+    key: 'score',
+    type: 'slider',
+    label: 'Pontuação',
+    componentProps: { min: 0, max: 100, step: 5 },
+  },
+  {
+    key: 'phone',
+    type: 'inputmask',
+    label: 'Telefone',
+    componentProps: { mask: '(99) 99999-9999', slotChar: '_' },
+  },
+],
+```
+
+The renderer maps the documented properties above to the corresponding PrimeNG inputs. Other host attributes can also be supplied through `componentProps`; unsupported component inputs require a renderer mapping before they can affect a PrimeNG `InputSignal`.
 
 Declare synchronous validators in the schema. Supported validators (v1):
 
@@ -180,13 +245,13 @@ interface FormSubmissionPayload {
 - This package follows **Semantic Versioning**.
 - **Breaking changes** to the public API require a major version bump.
 - **Schema changes** (e.g., new `schemaVersion`) are documented with migration notes in `CHANGELOG.md`.
-- v1 compatibility is limited to Angular 21 + PrimeNG 21.
+- Compatibility is limited to Angular 22 + PrimeNG 22.
 
 ## v1 Limitations
 
-- Only Angular 21 + PrimeNG 21 officially supported.
+- Only Angular 22 + PrimeNG 22 officially supported.
 - Only synchronous validators (async validation is out of v1 scope).
-- Supported field types: `text`, `email`, `password`, `number`, `textarea`, `select`, `checkbox`, `radio`, `date`, `date-range`, `file`, `custom`.
+- Supported field types are listed in the table above.
 - `schemaVersion` must be `"1.0"`.
 
 ## Publish Checklist
