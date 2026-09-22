@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, type Type } from '@angular/core';
 
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { InputText } from 'primeng/inputtext';
@@ -6,13 +6,31 @@ import { Password } from 'primeng/password';
 import { InputNumber } from 'primeng/inputnumber';
 import { Textarea } from 'primeng/textarea';
 import { Select } from 'primeng/select';
+import { AutoComplete } from 'primeng/autocomplete';
+import { CascadeSelect } from 'primeng/cascadeselect';
 import { Checkbox } from 'primeng/checkbox';
 import { RadioButton } from 'primeng/radiobutton';
+import { Listbox } from 'primeng/listbox';
+import { SelectButton } from 'primeng/selectbutton';
+import { ToggleButton } from 'primeng/togglebutton';
+import { ToggleSwitch } from 'primeng/toggleswitch';
+import { InputColor } from 'primeng/inputcolor';
+import { InputMask } from 'primeng/inputmask';
+import { InputOtp } from 'primeng/inputotp';
+import { InputTags } from 'primeng/inputtags';
+import * as EditorPackage from 'primeng/editor';
 import { DatePicker } from 'primeng/datepicker';
+import { Slider } from 'primeng/slider';
+import { Knob } from 'primeng/knob';
+import { Rating } from 'primeng/rating';
+import { TreeSelect } from 'primeng/treeselect';
+import { Bind } from 'primeng/bind';
 import { FileUpload } from 'primeng/fileupload';
 import { FloatLabel } from 'primeng/floatlabel';
 import { FieldDefinition } from '../models/dynamic-form.types';
 import { getFirstErrorMessage } from '../mappers/error-message.mapper';
+
+const Editor = (EditorPackage as { Editor: Type<unknown> }).Editor;
 
 @Component({
   selector: 'pdf-field-renderer',
@@ -24,9 +42,25 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
     InputNumber,
     Textarea,
     Select,
+    AutoComplete,
+    CascadeSelect,
     Checkbox,
     RadioButton,
+    Listbox,
+    SelectButton,
+    ToggleButton,
+    ToggleSwitch,
+    InputColor,
+    InputMask,
+    InputOtp,
+    InputTags,
+    Editor,
     DatePicker,
+    Slider,
+    Knob,
+    Rating,
+    TreeSelect,
+    Bind,
     FileUpload,
     FloatLabel,
 ],
@@ -37,6 +71,7 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
           <p-floatlabel variant="on">
             <input
               pInputText
+              [pBind]="field().componentProps"
               [id]="field().key"
               [formControl]="fieldControl"
               [placeholder]="field().placeholder ?? ''"
@@ -50,6 +85,7 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
           <p-floatlabel variant="on">
             <input
               pInputText
+              [pBind]="field().componentProps"
               type="email"
               [id]="field().key"
               [formControl]="fieldControl"
@@ -63,11 +99,12 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
         @case ('password') {
           <p-floatlabel variant="on">
             <p-password
+              [pBind]="field().componentProps"
               [inputId]="field().key"
               [formControl]="fieldControl"
               [placeholder]="field().placeholder ?? ''"
-              [feedback]="false"
-              [toggleMask]="true"
+              [feedback]="componentProp('feedback', false)"
+              [toggleMask]="componentProp('toggleMask', true)"
               [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
               [attr.aria-describedby]="ariaDescribedBy"
             />
@@ -77,6 +114,7 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
         @case ('number') {
           <p-floatlabel variant="on">
             <p-inputnumber
+              [pBind]="field().componentProps"
               [inputId]="field().key"
               [formControl]="fieldControl"
               [placeholder]="field().placeholder ?? ''"
@@ -90,6 +128,7 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
           <p-floatlabel variant="on">
             <textarea
               pTextarea
+              [pBind]="field().componentProps"
               [id]="field().key"
               [formControl]="fieldControl"
               [placeholder]="field().placeholder ?? ''"
@@ -102,6 +141,37 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
         }
         @case ('select') {
           <p-select
+            [pBind]="field().componentProps"
+            [inputId]="field().key"
+            [formControl]="fieldControl"
+            [options]="field().options ?? []"
+            optionLabel="label"
+            optionValue="value"
+            [filter]="componentProp('filter', false)"
+            [showClear]="componentProp('showClear', false)"
+            [variant]="componentProp('variant', undefined)"
+            [panelStyle]="componentProp('panelStyle', undefined)"
+            [placeholder]="field().placeholder ?? field().label"
+            [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+            [attr.aria-describedby]="ariaDescribedBy"
+          />
+        }
+        @case ('autocomplete') {
+          <p-autocomplete
+            [pBind]="field().componentProps"
+            [inputId]="field().key"
+            [formControl]="fieldControl"
+            [suggestions]="field().options ?? []"
+            optionLabel="label"
+            optionValue="value"
+            [placeholder]="field().placeholder ?? field().label"
+            [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+            [attr.aria-describedby]="ariaDescribedBy"
+          />
+        }
+        @case ('cascadeselect') {
+          <p-cascadeselect
+            [pBind]="field().componentProps"
             [inputId]="field().key"
             [formControl]="fieldControl"
             [options]="field().options ?? []"
@@ -115,6 +185,7 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
         @case ('checkbox') {
           <div class="pdf-field__checkbox">
             <p-checkbox
+              [pBind]="field().componentProps"
               [inputId]="field().key"
               [formControl]="fieldControl"
               [binary]="true"
@@ -137,6 +208,7 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
             @for (option of field().options ?? []; track option.value) {
               <div class="pdf-field__radio-item">
                 <p-radiobutton
+                  [pBind]="field().componentProps"
                   [inputId]="field().key + '_' + option.value"
                   [value]="option.value"
                   [formControl]="fieldControl"
@@ -146,14 +218,120 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
             }
           </div>
         }
+        @case ('multiselect') {
+          <p-select
+            [pBind]="field().componentProps"
+            [inputId]="field().key"
+            [formControl]="fieldControl"
+            [options]="field().options ?? []"
+            optionLabel="label"
+            optionValue="value"
+            [multiple]="true"
+            [placeholder]="field().placeholder ?? field().label"
+            [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+            [attr.aria-describedby]="ariaDescribedBy"
+          />
+        }
+        @case ('listbox') {
+          <p-listbox
+            [pBind]="field().componentProps"
+            [formControl]="fieldControl"
+            [options]="field().options ?? []"
+            optionLabel="label"
+            optionValue="value"
+            [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+            [attr.aria-describedby]="ariaDescribedBy"
+          />
+        }
+        @case ('selectbutton') {
+          <p-selectbutton
+            [pBind]="field().componentProps"
+            [formControl]="fieldControl"
+            [options]="field().options ?? []"
+            optionLabel="label"
+            optionValue="value"
+            [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+            [attr.aria-describedby]="ariaDescribedBy"
+          />
+        }
+        @case ('togglebutton') {
+          <p-togglebutton
+            [pBind]="field().componentProps"
+            [formControl]="fieldControl"
+            onLabel="Sim"
+            offLabel="Nao"
+            [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+            [attr.aria-describedby]="ariaDescribedBy"
+          />
+        }
+        @case ('toggleswitch') {
+          <p-toggleswitch
+            [pBind]="field().componentProps"
+            [inputId]="field().key"
+            [formControl]="fieldControl"
+            [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+            [attr.aria-describedby]="ariaDescribedBy"
+          />
+          <label [for]="field().key">{{ field().label }}</label>
+        }
+        @case ('colorpicker') {
+          <p-inputcolor
+            [pBind]="field().componentProps"
+            [formControl]="fieldControl"
+            [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+            [attr.aria-describedby]="ariaDescribedBy"
+          />
+        }
+        @case ('inputmask') {
+          <p-inputmask
+            [pBind]="field().componentProps"
+            [id]="field().key"
+            [formControl]="fieldControl"
+              [mask]="componentProp('mask', field().placeholder ?? '9999-9999')"
+            [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+            [attr.aria-describedby]="ariaDescribedBy"
+          />
+        }
+        @case ('inputotp') {
+          <p-inputotp
+            [pBind]="field().componentProps"
+            [formControl]="fieldControl"
+              [length]="componentProp('length', 6)"
+            [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+            [attr.aria-describedby]="ariaDescribedBy"
+          />
+        }
+        @case ('inputtags') {
+          <p-inputtags
+            [pBind]="field().componentProps"
+            [formControl]="fieldControl"
+            [placeholder]="field().placeholder ?? field().label"
+            [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+            [attr.aria-describedby]="ariaDescribedBy"
+          />
+        }
+        @case ('editor') {
+          <p-editor
+            [pBind]="field().componentProps"
+            [formControl]="fieldControl"
+              [style]="componentProp('style', { height: '180px' })"
+            [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+            [attr.aria-describedby]="ariaDescribedBy"
+          />
+          <label [for]="field().key">{{ field().label }}</label>
+        }
         @case ('date') {
           <p-floatlabel variant="on">
             <p-datepicker
+              [pBind]="field().componentProps"
               [inputId]="field().key"
               [formControl]="fieldControl"
               [placeholder]="field().placeholder ?? ''"
               [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
-              dateFormat="dd/mm/yy"
+              [showIcon]="componentProp('showIcon', false)"
+              [showButtonBar]="componentProp('showButtonBar', false)"
+              [dateFormat]="componentProp('dateFormat', 'dd/mm/yy')"
+              [view]="componentProp('view', 'date')"
               [attr.aria-describedby]="ariaDescribedBy"
             />
             <label [for]="field().key">{{ field().label }}</label>
@@ -162,31 +340,75 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
         @case ('date-range') {
           <p-floatlabel variant="on">
             <p-datepicker
+              [pBind]="field().componentProps"
               [inputId]="field().key"
               [formControl]="fieldControl"
               [placeholder]="field().placeholder ?? ''"
               [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
-              selectionMode="range"
-              dateFormat="dd/mm/yy"
+              [showIcon]="componentProp('showIcon', false)"
+              [showButtonBar]="componentProp('showButtonBar', false)"
+              [selectionMode]="componentProp('selectionMode', 'range')"
+              [dateFormat]="componentProp('dateFormat', 'dd/mm/yy')"
               [attr.aria-describedby]="ariaDescribedBy"
             />
             <label [for]="field().key">{{ field().label }}</label>
           </p-floatlabel>
         }
+        @case ('slider') {
+          <label [for]="field().key">{{ field().label }}</label>
+          <p-slider
+            [pBind]="field().componentProps"
+            [formControl]="fieldControl"
+            [min]="componentProp('min', 0)"
+            [max]="componentProp('max', 100)"
+            [step]="componentProp('step', 1)"
+            [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+            [attr.aria-describedby]="ariaDescribedBy"
+          />
+        }
+        @case ('knob') {
+          <p-knob
+            [pBind]="field().componentProps"
+            [formControl]="fieldControl"
+            [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+            [attr.aria-describedby]="ariaDescribedBy"
+          />
+          <label [for]="field().key">{{ field().label }}</label>
+        }
+        @case ('rating') {
+          <p-rating
+            [pBind]="field().componentProps"
+            [formControl]="fieldControl"
+            [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+            [attr.aria-describedby]="ariaDescribedBy"
+          />
+        }
+        @case ('treeselect') {
+          <p-treeselect
+            [pBind]="field().componentProps"
+            [inputId]="field().key"
+            [formControl]="fieldControl"
+            [options]="field().options ?? []"
+            [placeholder]="field().placeholder ?? field().label"
+            [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
+            [attr.aria-describedby]="ariaDescribedBy"
+          />
+        }
         @case ('file') {
           <div class="pdf-field__file">
             <label [for]="field().key" class="pdf-field__file-label">{{ field().label }}</label>
             <p-fileupload
+              [pBind]="field().componentProps"
               [name]="field().key"
-              mode="basic"
-              [customUpload]="true"
-              [auto]="false"
-              [chooseLabel]="field().label"
-              [showUploadButton]="false"
-              [showCancelButton]="false"
-              [multiple]="field().multiple ?? false"
-              [accept]="field().accept ?? ''"
-              [maxFileSize]="field().maxFileSizeBytes"
+              [mode]="componentProp('mode', 'basic')"
+              [customUpload]="componentProp('customUpload', true)"
+              [auto]="componentProp('auto', false)"
+              [chooseLabel]="componentProp('chooseLabel', field().label)"
+              [showUploadButton]="componentProp('showUploadButton', false)"
+              [showCancelButton]="componentProp('showCancelButton', false)"
+              [multiple]="componentProp('multiple', field().multiple ?? false)"
+              [accept]="componentProp('accept', field().accept ?? '')"
+              [maxFileSize]="componentProp('maxFileSize', field().maxFileSizeBytes)"
               [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
               [attr.aria-describedby]="ariaDescribedBy"
               (onSelect)="onFileSelect($event)"
@@ -197,6 +419,7 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
           <p-floatlabel variant="on">
             <input
               pInputText
+              [pBind]="field().componentProps"
               [id]="field().key"
               [formControl]="fieldControl"
               [placeholder]="field().placeholder ?? ''"
@@ -285,6 +508,11 @@ export class FieldRendererComponent {
     return this.formGroup().get(this.field().key) as FormControl<unknown>;
   }
 
+  protected componentProp<T>(name: string, fallback: T): T {
+    const value = this.field().componentProps?.[name];
+    return value === undefined ? fallback : (value as T);
+  }
+
   protected get hasError(): boolean {
     const control = this.fieldControl;
     return !!(control?.invalid && (control?.dirty || control?.touched));
@@ -323,7 +551,8 @@ export class FieldRendererComponent {
   protected onFileSelect(event: unknown): void {
     const payload = event as { files?: File[] };
     const files = payload.files ?? [];
-    const value = this.field().multiple ? files : files[0] ?? null;
+    const multiple = this.componentProp('multiple', this.field().multiple ?? false);
+    const value = multiple ? files : files[0] ?? null;
 
     this.fieldControl.setValue(value);
     this.fieldControl.markAsDirty();

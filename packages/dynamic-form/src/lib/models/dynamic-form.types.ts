@@ -5,10 +5,26 @@ export type FieldType =
   | 'number'
   | 'textarea'
   | 'select'
+  | 'autocomplete'
+  | 'cascadeselect'
   | 'checkbox'
   | 'radio'
+  | 'multiselect'
+  | 'listbox'
+  | 'selectbutton'
+  | 'togglebutton'
+  | 'toggleswitch'
+  | 'colorpicker'
+  | 'inputmask'
+  | 'inputotp'
+  | 'inputtags'
+  | 'editor'
   | 'date'
   | 'date-range'
+  | 'slider'
+  | 'knob'
+  | 'rating'
+  | 'treeselect'
   | 'file'
   | 'custom';
 
@@ -19,10 +35,26 @@ export const SUPPORTED_FIELD_TYPES: readonly FieldType[] = [
   'number',
   'textarea',
   'select',
+  'autocomplete',
+  'cascadeselect',
   'checkbox',
   'radio',
+  'multiselect',
+  'listbox',
+  'selectbutton',
+  'togglebutton',
+  'toggleswitch',
+  'colorpicker',
+  'inputmask',
+  'inputotp',
+  'inputtags',
+  'editor',
   'date',
   'date-range',
+  'slider',
+  'knob',
+  'rating',
+  'treeselect',
   'file',
   'custom',
 ] as const;
@@ -41,6 +73,21 @@ export interface FieldOption {
   label: string;
   value: string | number | boolean;
 }
+
+/** Values accepted by PrimeNG's dynamic `pBind` property binding. */
+export type PrimeNGComponentProperty =
+  | string
+  | number
+  | boolean
+  | null
+  | Date
+  | readonly PrimeNGComponentProperty[]
+  | { readonly [key: string]: PrimeNGComponentProperty };
+
+/** Component-specific PrimeNG inputs and host attributes. */
+export type PrimeNGComponentProperties = Readonly<
+  Record<string, PrimeNGComponentProperty>
+>;
 
 export interface ValidationRule {
   name: ValidatorName;
@@ -76,6 +123,8 @@ export interface FieldDefinition {
   placeholder?: string;
   initialValue?: unknown;
   options?: FieldOption[];
+  /** PrimeNG inputs supported by the selected component, applied through pBind. */
+  componentProps?: PrimeNGComponentProperties;
   validators?: ValidationRule[];
   ui?: UIHints;
   disabled?: boolean;

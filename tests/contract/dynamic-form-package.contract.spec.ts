@@ -75,8 +75,8 @@ describe('Contract: @linkiez/primeng-dynamic-form exports', () => {
   });
 
   describe('Constants', () => {
-    it('should export SUPPORTED_FIELD_TYPES with 12 types', () => {
-      expect(SUPPORTED_FIELD_TYPES).toHaveLength(12);
+    it('should export SUPPORTED_FIELD_TYPES with all PrimeNG form types', () => {
+      expect(SUPPORTED_FIELD_TYPES).toHaveLength(28);
       expect(SUPPORTED_FIELD_TYPES).toContain('text');
       expect(SUPPORTED_FIELD_TYPES).toContain('email');
       expect(SUPPORTED_FIELD_TYPES).toContain('password');

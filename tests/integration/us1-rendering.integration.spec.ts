@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
-import { DynamicFormComponent } from '@linkiez/primeng-dynamic-form';
+import { By } from '@angular/platform-browser';
+import { DynamicFormComponent } from '../../packages/dynamic-form/src/lib/components/dynamic-form.component';
 import type { FormSchema } from '@linkiez/primeng-dynamic-form';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -35,7 +36,12 @@ class RenderingHostComponent {
           { label: 'Feminino', value: 'F' },
         ],
       },
-      { key: 'birth', type: 'date', label: 'Nascimento' },
+      {
+        key: 'birth',
+        type: 'date',
+        label: 'Nascimento',
+        componentProps: { dateFormat: 'mm/yy', showIcon: true },
+      },
     ],
   };
 }
@@ -54,7 +60,7 @@ describe('Integration: US1 - Field type rendering', () => {
 
   it('should render all 9 field types without error', () => {
     const fields = fixture.nativeElement.querySelectorAll('pdf-field-renderer');
-    expect(fields.length).toBe(9);
+    expect(fields).toHaveLength(9);
   });
 
   it('should render a text input for type=text', () => {
@@ -72,6 +78,17 @@ describe('Integration: US1 - Field type rendering', () => {
     expect(select).toBeTruthy();
   });
 
+  it('should apply componentProps over renderer defaults', () => {
+    const datePicker = fixture.debugElement.query(By.css('p-datepicker'))
+      .componentInstance as {
+        dateFormat: () => string;
+        showIcon: () => boolean;
+      };
+
+    expect(datePicker.dateFormat()).toBe('mm/yy');
+    expect(datePicker.showIcon()).toBe(true);
+  });
+
   it('should render a p-checkbox for type=checkbox', () => {
     const checkbox = fixture.nativeElement.querySelector('p-checkbox');
     expect(checkbox).toBeTruthy();
@@ -79,7 +96,7 @@ describe('Integration: US1 - Field type rendering', () => {
 
   it('should render p-radiobutton items for type=radio', () => {
     const radios = fixture.nativeElement.querySelectorAll('p-radiobutton');
-    expect(radios.length).toBe(2);
+    expect(radios).toHaveLength(2);
   });
 
   it('should not render hidden fields', () => {
@@ -95,6 +112,6 @@ describe('Integration: US1 - Field type rendering', () => {
     };
     fixture.detectChanges();
     const fields = fixture.nativeElement.querySelectorAll('pdf-field-renderer');
-    expect(fields.length).toBe(1);
+    expect(fields).toHaveLength(1);
   });
 });

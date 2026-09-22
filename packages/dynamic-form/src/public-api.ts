@@ -9,6 +9,8 @@ export type {
   FormSubmissionPayload,
   FieldType,
   FieldOption,
+  PrimeNGComponentProperty,
+  PrimeNGComponentProperties,
   LayoutConfig,
   SubmitConfig,
   UIHints,
