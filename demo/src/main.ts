@@ -2,7 +2,7 @@ import { provideZoneChangeDetection } from "@angular/core";
 import 'zone.js';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { providePrimeNG } from 'primeng/config';
-import Aura from '@primeng/themes/aura';
+import Aura from '@primeuix/themes/aura';
 import { AppComponent } from './app/app.component';
 
 bootstrapApplication(AppComponent, {

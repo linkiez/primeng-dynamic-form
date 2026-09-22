@@ -37,13 +37,13 @@ import {
             <span class="header-icon">⚡</span>
             <div>
               <h1 class="header-title">primeng-dynamic-form</h1>
-              <p class="header-subtitle">Formulários declarativos para Angular 20 + PrimeNG 20</p>
+              <p class="header-subtitle">Formulários declarativos para Angular 22 + PrimeNG 22</p>
             </div>
           </div>
           <div class="header-badges">
             <p-tag value="v0.1.0" severity="info" />
-            <p-tag value="Angular 20" severity="success" />
-            <p-tag value="PrimeNG 20" severity="warn" />
+            <p-tag value="Angular 22" severity="success" />
+            <p-tag value="PrimeNG 22" severity="warn" />
           </div>
         </div>
       </div>
@@ -521,7 +521,7 @@ export class AppComponent {
   basicPayload = signal<FormSubmissionPayload | null>(null);
   validationPayload = signal<FormSubmissionPayload | null>(null);
   configPayload = signal<FormSubmissionPayload | null>(null);
-  changePayload = signal<FormSubmissionPayload | null>(null);
+  changePayload = signal<Record<string, unknown> | null>(null);
 
   // ── Feature chips ──
   features = [
@@ -794,7 +794,7 @@ interface FormSubmissionPayload {
     this.configPayload.set(payload);
   }
 
-  onFormChange(payload: FormSubmissionPayload): void {
-    this.changePayload.set(payload);
+  onFormChange(payload: Event | Record<string, unknown>): void {
+    this.changePayload.set(payload instanceof Event ? {} : payload);
   }
 }

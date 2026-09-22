@@ -11,7 +11,11 @@ export type EvidenceIndex = Readonly<Record<string, HardeningEvidence>>;
  * @returns Index of evidence keyed by control key.
  */
 export function indexEvidence(evidence: HardeningEvidence[]): EvidenceIndex {
-  return Object.fromEntries(evidence.map((e) => [e.controlKey, e]));
+  const index: Record<string, HardeningEvidence> = {};
+  evidence.forEach((item) => {
+    index[item.controlKey] = item;
+  });
+  return index;
 }
 
 /**

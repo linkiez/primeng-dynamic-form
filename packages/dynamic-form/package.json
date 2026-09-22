@@ -1,16 +1,19 @@
 {
   "name": "@linkiez/primeng-dynamic-form",
   "version": "0.1.1",
-  "description": "Angular 21 + PrimeNG 21 dynamic form library",
+  "description": "Angular 22 + PrimeNG 22 dynamic form library",
   "repository": {
     "type": "git",
     "url": "https://github.com/linkiez/primeng-dynamic-form"
   },
   "peerDependencies": {
-    "@angular/common": "^21.0.0",
-    "@angular/core": "^21.0.0",
-    "@angular/forms": "^21.0.0",
-    "primeng": "^21.0.0"
+    "@angular/cdk": "^22.1.0",
+    "@angular/common": "^22.1.0",
+    "@angular/core": "^22.1.0",
+    "@angular/forms": "^22.1.0",
+    "@angular/platform-browser": "^22.1.0",
+    "@angular/router": "^22.1.0",
+    "primeng": "^22.1.1"
   },
   "peerDependenciesMeta": {
     "@angular/common": { "optional": false },
