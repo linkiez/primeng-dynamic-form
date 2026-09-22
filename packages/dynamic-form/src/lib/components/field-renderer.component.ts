@@ -216,7 +216,7 @@ import { getFirstErrorMessage } from '../mappers/error-message.mapper';
 
       @if (hasError && errorMessage) {
         <div [id]="errorId" aria-live="assertive" role="alert">
-          <p-message severity="error" [text]="errorMessage" />
+          <p-message severity="error">{{ errorMessage }}</p-message>
         </div>
       }
     </div>

@@ -68,6 +68,17 @@ describe('Integration: US2 - Validation flow', () => {
     expect(dynamicForm['formGroup'].touched).toBe(true);
   });
 
+  it('should render the required validation message', () => {
+    const form = fixture.nativeElement.querySelector('form');
+    form.dispatchEvent(new Event('submit'));
+    fixture.detectChanges();
+
+    const message = fixture.nativeElement.querySelector(
+      '#email_error .p-message-text',
+    );
+    expect(message?.textContent).toContain('Este campo é obrigatório.');
+  });
+
   it('should emit formSubmit with valid payload when form is valid', async () => {
     const form = fixture.nativeElement.querySelector('form');
     const dynamicForm = fixture.debugElement.children[0].componentInstance as DynamicFormComponent;
