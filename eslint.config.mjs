@@ -22,6 +22,7 @@ export default [
     languageOptions: {
       parser: tsParser,
       parserOptions: {
+        tsconfigRootDir: import.meta.dirname,
         project: [
           './packages/dynamic-form/tsconfig.lib.json',
           './packages/dynamic-form/tsconfig.spec.json',

@@ -1,8 +1,8 @@
-import { Component, input, type Type } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { InputText } from 'primeng/inputtext';
-import { Password } from 'primeng/password';
+import { InputPassword } from 'primeng/inputpassword';
 import { InputNumber } from 'primeng/inputnumber';
 import { Textarea } from 'primeng/textarea';
 import { Select } from 'primeng/select';
@@ -18,7 +18,6 @@ import { InputColor } from 'primeng/inputcolor';
 import { InputMask } from 'primeng/inputmask';
 import { InputOtp } from 'primeng/inputotp';
 import { InputTags } from 'primeng/inputtags';
-import * as EditorPackage from 'primeng/editor';
 import { DatePicker } from 'primeng/datepicker';
 import { Slider } from 'primeng/slider';
 import { Knob } from 'primeng/knob';
@@ -30,15 +29,13 @@ import { FloatLabel } from 'primeng/floatlabel';
 import { FieldDefinition } from '../models/dynamic-form.types';
 import { getFirstErrorMessage } from '../mappers/error-message.mapper';
 
-const Editor = (EditorPackage as { Editor: Type<unknown> }).Editor;
-
 @Component({
   selector: 'pdf-field-renderer',
   standalone: true,
   imports: [
     ReactiveFormsModule,
     InputText,
-    Password,
+    InputPassword,
     InputNumber,
     Textarea,
     Select,
@@ -54,7 +51,6 @@ const Editor = (EditorPackage as { Editor: Type<unknown> }).Editor;
     InputMask,
     InputOtp,
     InputTags,
-    Editor,
     DatePicker,
     Slider,
     Knob,
@@ -98,13 +94,14 @@ const Editor = (EditorPackage as { Editor: Type<unknown> }).Editor;
         }
         @case ('password') {
           <p-floatlabel variant="on">
-            <p-password
+            <input
+              pInputText
+              pInputPassword
               [pBind]="field().componentProps"
-              [inputId]="field().key"
+              [id]="field().key"
               [formControl]="fieldControl"
               [placeholder]="field().placeholder ?? ''"
-              [feedback]="componentProp('feedback', false)"
-              [toggleMask]="componentProp('toggleMask', true)"
+              [mask]="componentProp('toggleMask', true)"
               [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
               [attr.aria-describedby]="ariaDescribedBy"
             />
@@ -311,13 +308,15 @@ const Editor = (EditorPackage as { Editor: Type<unknown> }).Editor;
           />
         }
         @case ('editor') {
-          <p-editor
+          <textarea
+            pTextarea
             [pBind]="field().componentProps"
+            [id]="field().key"
             [formControl]="fieldControl"
-              [style]="componentProp('style', { height: '180px' })"
             [attr.aria-label]="field().ui?.ariaLabel ?? field().label"
             [attr.aria-describedby]="ariaDescribedBy"
-          />
+            rows="6"
+          ></textarea>
           <label [for]="field().key">{{ field().label }}</label>
         }
         @case ('date') {

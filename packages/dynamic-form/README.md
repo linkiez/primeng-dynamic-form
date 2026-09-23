@@ -74,7 +74,7 @@ export class ExampleComponent {
 | `inputmask` | `p-inputmask` |
 | `inputotp` | `p-inputotp` |
 | `inputtags` | `p-inputtags` |
-| `editor` | `p-editor` |
+| `editor` | `pTextarea` (fallback textual; o `Editor` do PrimeNG OSS está deprecated) |
 | `date`     | `p-datepicker`     |
 | `date-range` | `p-datepicker` (range mode) |
 | `slider` | `p-slider` |
