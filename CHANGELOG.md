@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/linkiez/primeng-dynamic-form/compare/v1.1.1...v1.1.2) (2026-09-23)
+
+
+### Bug Fixes
+
+* corrigir renderer e configuração do lint ([b8bd022](https://github.com/linkiez/primeng-dynamic-form/commit/b8bd022a686f6f1248a7aeee78b952a9c673d6fc))
+
 ## [1.1.1](https://github.com/linkiez/primeng-dynamic-form/compare/v1.1.0...v1.1.1) (2026-09-22)
 
 
